@@ -18,6 +18,7 @@ export interface Project {
     image: string;
     date: string;
     logo?: string;
+    highlight?: string;
 }
 
 export interface Experience {
@@ -34,21 +35,6 @@ export interface Skill {
     skills: {
         name: string;
     }[];
-}
-
-export interface Certification {
-    name: string;
-    issuer: string;
-    date: string;
-    logo?: string;
-}
-
-export interface Education {
-    institution: string;
-    degree: string;
-    duration: string;
-    grade: string;
-    coursework?: string[];
 }
 
 export interface ContactForm {

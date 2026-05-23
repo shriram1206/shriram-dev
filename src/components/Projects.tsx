@@ -1,162 +1,185 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, TrendingUp } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 import { projects } from '../data/portfolio';
-import { FeedbackWallLogo } from './FeedbackWallLogo';
-import '../../src/styles/icons.module.css';
+import TiltCard from './TiltCard';
 
 const Projects: React.FC = () => {
+    const featuredProject = projects[0];
+    const otherProjects = projects.slice(1);
+
     return (
-        <section id="projects" className="section-padding">
+        <section id="projects" className="section-padding bg-light-surface/50 dark:bg-dark-surface/20">
             <div className="container-custom">
                 {/* Section Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    transition={{ duration: 0.5 }}
+                    className="mb-12"
                 >
-                    <span className="text-light-primary dark:text-dark-primary font-semibold text-sm uppercase tracking-wider">
-                        Portfolio
-                    </span>
-                    <h2 className="text-3xl md:text-4xl font-heading font-bold mt-2 mb-4">
-                        Featured <span className="gradient-text">Projects</span>
-                    </h2>
-                    <p className="text-light-textSecondary dark:text-dark-textSecondary max-w-2xl mx-auto">
-                        Showcasing enterprise-grade applications built with modern technologies and best practices
+                    <p className="section-label">Projects</p>
+                    <h2 className="section-title">Featured Projects</h2>
+                    <p className="section-subtitle">
+                        Curated projects that demonstrate product thinking, backend architecture, and practical engineering.
                     </p>
                 </motion.div>
 
-                {/* Projects Grid */}
-                <div className="space-y-12">
-                    {projects.map((project, index) => (
+                {/* Featured Project — Large Card */}
+                <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="mb-8"
+                >
+                    <TiltCard className="relative glass-card overflow-hidden" tiltAmount={3}>
+                        <div className="grid md:grid-cols-2">
+                            {/* Image */}
+                            <div className="relative aspect-video md:aspect-auto bg-light-surface dark:bg-dark-surface overflow-hidden group">
+                                <img
+                                    src={featuredProject.image}
+                                    alt={featuredProject.title}
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            </div>
+
+                            {/* Content */}
+                            <div className="p-6 md:p-8 flex flex-col justify-center">
+                                <div className="chip w-fit mb-4 text-xs">Featured Project</div>
+                                <h3 className="text-2xl font-bold text-light-textPrimary dark:text-dark-textPrimary mb-3">
+                                    {featuredProject.title}
+                                </h3>
+                                <p className="text-sm text-light-textSecondary dark:text-dark-textSecondary leading-relaxed mb-4">
+                                    {featuredProject.longDescription}
+                                </p>
+
+                                {/* Highlight */}
+                                {featuredProject.highlight && (
+                                    <div className="text-xs text-light-textSecondary dark:text-dark-textSecondary bg-light-surface dark:bg-dark-bg p-3 rounded-lg border border-light-border dark:border-dark-border mb-4 leading-relaxed">
+                                        <span className="font-semibold text-light-textPrimary dark:text-dark-textPrimary">Highlights: </span>
+                                        {featuredProject.highlight}
+                                    </div>
+                                )}
+
+                                {/* Tech Stack */}
+                                <div className="flex flex-wrap gap-1.5 mb-5">
+                                    {featuredProject.techStack.map((tech) => (
+                                        <span key={tech} className="chip text-xs">
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+
+                                {/* Links */}
+                                <div className="flex gap-3">
+                                    {featuredProject.links.live && featuredProject.links.live !== '#' && (
+                                        <motion.a
+                                            href={featuredProject.links.live}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="btn-primary text-sm inline-flex items-center gap-2"
+                                            whileHover={{ scale: 1.03 }}
+                                            whileTap={{ scale: 0.97 }}
+                                        >
+                                            <ExternalLink className="w-3.5 h-3.5" />
+                                            Live Demo
+                                        </motion.a>
+                                    )}
+                                    {featuredProject.links.github && featuredProject.links.github !== '#' && (
+                                        <motion.a
+                                            href={featuredProject.links.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="btn-outline text-sm inline-flex items-center gap-2"
+                                            whileHover={{ scale: 1.03 }}
+                                            whileTap={{ scale: 0.97 }}
+                                        >
+                                            <Github className="w-3.5 h-3.5" />
+                                            GitHub
+                                        </motion.a>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </TiltCard>
+                </motion.div>
+
+                {/* Other Projects — 2-Column Grid */}
+                <div className="grid md:grid-cols-2 gap-6">
+                    {otherProjects.map((project, index) => (
                         <motion.div
                             key={project.id}
-                            initial={{ opacity: 0, y: 40 }}
+                            initial={{ opacity: 0, y: 24 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.2 }}
-                            className="glass-card p-8 hover-lift"
+                            transition={{ delay: index * 0.15, duration: 0.5 }}
                         >
-                            <div className="grid md:grid-cols-3 gap-8">
-                                {/* Project Image */}
-                                <motion.div
-                                    whileHover={{ scale: 1.05 }}
-                                    className="md:col-span-1"
-                                >
-                                    <div className="relative rounded-soft overflow-hidden aspect-video md:aspect-square group">
-                                        <img
-                                            src={project.image}
-                                            alt={project.title}
-                                            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                                        />
-                                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                            <p className="text-white font-medium px-4 py-2 bg-black/50 rounded-full backdrop-blur-sm">
-                                                {project.date}
-                                            </p>
+                            <TiltCard className="relative glass-card overflow-hidden flex flex-col h-full" tiltAmount={5}>
+                                {/* Image */}
+                                <div className="relative aspect-video bg-light-surface dark:bg-dark-surface overflow-hidden group">
+                                    <img
+                                        src={project.image}
+                                        alt={project.title}
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                </div>
+
+                                {/* Content */}
+                                <div className="p-5 flex flex-col flex-1">
+                                    <h3 className="text-lg font-bold text-light-textPrimary dark:text-dark-textPrimary mb-2">
+                                        {project.title}
+                                    </h3>
+                                    <p className="text-sm text-light-textSecondary dark:text-dark-textSecondary leading-relaxed mb-3 flex-1">
+                                        {project.description}
+                                    </p>
+
+                                    {/* Highlight */}
+                                    {project.highlight && (
+                                        <div className="text-xs text-light-textSecondary dark:text-dark-textSecondary bg-light-surface dark:bg-dark-bg p-2.5 rounded-lg border border-light-border dark:border-dark-border mb-3 leading-relaxed">
+                                            <span className="font-semibold text-light-textPrimary dark:text-dark-textPrimary">Why it matters: </span>
+                                            {project.highlight}
                                         </div>
-                                        {/* Logo Badge - Top Right */}
-                                        {project.logo === 'feedbackwall' && (
-                                            <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm p-2 rounded-soft shadow-lg hover:bg-white transition-all">
-                                                <div className="text-black">
-                                                    <FeedbackWallLogo size="md" />
-                                                </div>
-                                            </div>
-                                        )}
-                                    </div>
-                                </motion.div>
+                                    )}
 
-                                {/* Project Details */}
-                                <div className="md:col-span-2 space-y-6">
-                                    {/* Title and Description */}
-                                    <div>
-                                        <h3 className="text-2xl font-heading font-bold text-light-textPrimary dark:text-dark-textPrimary mb-3">
-                                            {project.title}
-                                        </h3>
-                                        <p className="text-light-textSecondary dark:text-dark-textSecondary leading-relaxed">
-                                            {project.description}
-                                        </p>
-                                    </div>
-
-                                    {/* Tech Stack Pills */}
-                                    <div className="flex flex-wrap gap-2">
-                                        {project.techStack.map((tech) => (
-                                            <span
-                                                key={tech}
-                                                className="px-3 py-1.5 text-sm bg-light-primary/10 dark:bg-dark-primary/20 text-light-primary dark:text-dark-primary border-2 border-light-primary/20 dark:border-dark-primary/40 rounded-soft font-semibold shadow-sm"
-                                            >
+                                    {/* Tech Stack */}
+                                    <div className="flex flex-wrap gap-1.5 mb-4">
+                                        {project.techStack.slice(0, 5).map((tech) => (
+                                            <span key={tech} className="chip text-xs">
                                                 {tech}
                                             </span>
                                         ))}
                                     </div>
 
-                                    {/* Key Achievements */}
-                                    <div>
-                                        <h4 className="text-sm font-semibold text-light-textPrimary dark:text-white mb-3 flex items-center gap-2">
-                                            <TrendingUp className="w-4 h-4 text-light-primary dark:text-dark-primary" strokeWidth={2.5} />
-                                            Key Achievements
-                                        </h4>
-                                        <ul className="space-y-2">
-                                            {project.achievements.slice(0, 3).map((achievement, i) => (
-                                                <li
-                                                    key={i}
-                                                    className="text-light-textSecondary dark:text-dark-textSecondary text-sm flex items-start gap-2"
-                                                >
-                                                    <span className="text-light-primary dark:text-dark-primary mt-1">•</span>
-                                                    <span>{achievement}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-
-                                    {/* Metrics */}
-                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                        {project.metrics.map((metric) => (
-                                            <div
-                                                key={metric.label}
-                                                className="p-3 bg-light-surface dark:bg-dark-surface border-2 border-light-border dark:border-dark-accent/50 rounded-soft shadow-sm"
-                                            >
-                                                <p className="text-xl font-heading font-bold text-light-primary dark:text-white">
-                                                    {metric.value}
-                                                </p>
-                                                <p className="text-xs text-light-textSecondary dark:text-dark-accent mt-1 font-medium">
-                                                    {metric.label}
-                                                </p>
-                                            </div>
-                                        ))}
-                                    </div>
-
                                     {/* Links */}
-                                    <div className="flex flex-wrap gap-3 pt-2">
-                                        {project.links.github && (
-                                            <motion.a
+                                    <div className="flex gap-3 mt-auto">
+                                        {project.links.live && project.links.live !== '#' && (
+                                            <a
+                                                href={project.links.live}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-sm font-medium text-light-textPrimary dark:text-dark-textPrimary hover:opacity-70 transition-opacity inline-flex items-center gap-1"
+                                            >
+                                                Live Demo <ArrowRight className="w-3.5 h-3.5" />
+                                            </a>
+                                        )}
+                                        {project.links.github && project.links.github !== '#' && (
+                                            <a
                                                 href={project.links.github}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-2 px-5 py-2.5 bg-light-textPrimary dark:bg-white text-white dark:text-dark-bg rounded-soft hover:shadow-lg transition-all font-semibold border-2 border-transparent dark:border-white"
-                                                whileHover={{ scale: 1.05 }}
-                                                whileTap={{ scale: 0.95 }}
+                                                className="text-sm font-medium text-light-textSecondary dark:text-dark-textSecondary hover:text-light-textPrimary dark:hover:text-dark-textPrimary transition-colors inline-flex items-center gap-1"
                                             >
-                                                <Github className="w-5 h-5" strokeWidth={2.5} />
+                                                <Github className="w-3.5 h-3.5" />
                                                 GitHub
-                                            </motion.a>
-                                        )}
-                                        {(project.links.live || project.links.demo) && (
-                                            <motion.a
-                                                href={project.links.live || project.links.demo}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-2 px-5 py-2.5 bg-light-primary dark:bg-dark-primary text-white dark:text-dark-bg rounded-soft hover:shadow-lg transition-all font-semibold border-2 border-light-primary dark:border-dark-primary"
-                                                whileHover={{ scale: 1.05 }}
-                                                whileTap={{ scale: 0.95 }}
-                                            >
-                                                <ExternalLink className="w-5 h-5" strokeWidth={2.5} />
-                                                Live Demo
-                                            </motion.a>
+                                            </a>
                                         )}
                                     </div>
                                 </div>
-                            </div>
+                            </TiltCard>
                         </motion.div>
                     ))}
                 </div>

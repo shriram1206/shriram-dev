@@ -1,17 +1,20 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
 import { personalInfo } from '../data/portfolio';
 
 const Footer: React.FC = () => {
+    const { scrollYProgress } = useScroll();
+    const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     const quickLinks = [
         { name: 'About', href: '#about' },
-        { name: 'Projects', href: '#projects' },
         { name: 'Experience', href: '#experience' },
+        { name: 'Projects', href: '#projects' },
         { name: 'Skills', href: '#skills' },
         { name: 'Contact', href: '#contact' },
     ];
@@ -23,103 +26,85 @@ const Footer: React.FC = () => {
     ];
 
     return (
-        <footer className="bg-light-surface dark:bg-dark-surface border-t border-light-border dark:border-dark-border">
-            <div className="container-custom py-12">
-                <div className="grid md:grid-cols-3 gap-8 mb-8">
-                    {/* Brand */}
+        <footer className="border-t border-light-border dark:border-dark-border">
+            <div className="container-custom py-10">
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                    {/* Left: Name + Role */}
                     <div>
-                        <h3 className="text-2xl font-heading font-bold gradient-text mb-3">
+                        <p className="text-sm font-semibold text-light-textPrimary dark:text-dark-textPrimary">
                             {personalInfo.name}
-                        </h3>
-                        <p className="text-light-textSecondary dark:text-dark-textSecondary text-sm mb-4">
+                        </p>
+                        <p className="text-xs text-light-textSecondary dark:text-dark-textSecondary mt-0.5">
                             {personalInfo.title}
                         </p>
-                        <p className="text-light-textSecondary dark:text-dark-textSecondary text-sm mb-6">
-                            {personalInfo.tagline}
-                        </p>
-
-                        {/* Social Links */}
-                        <div className="flex items-center gap-4">
-                            {socialLinks.map((social) => (
-                                <a
-                                    key={social.name}
-                                    href={social.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="p-2 bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border rounded-lg text-light-textSecondary dark:text-dark-textSecondary hover:text-light-primary dark:hover:text-dark-primary hover:border-light-primary dark:hover:border-dark-primary transition-all duration-300"
-                                    aria-label={social.name}
-                                >
-                                    <social.icon className="w-5 h-5" />
-                                </a>
-                            ))}
-                        </div>
                     </div>
 
-                    {/* Quick Links */}
-                    <div>
-                        <h4 className="font-heading font-semibold text-light-textPrimary dark:text-dark-textPrimary mb-4">
-                            Quick Links
-                        </h4>
-                        <ul className="space-y-2">
-                            {quickLinks.map((link) => (
-                                <li key={link.name}>
-                                    <a
-                                        href={link.href}
-                                        className="text-light-textSecondary dark:text-dark-textSecondary hover:text-light-primary dark:hover:text-dark-primary transition-colors text-sm"
-                                    >
-                                        {link.name}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
+                    {/* Center: Quick Links */}
+                    <div className="flex flex-wrap gap-4">
+                        {quickLinks.map((link) => (
+                            <a
+                                key={link.name}
+                                href={link.href}
+                                className="text-xs text-light-textSecondary dark:text-dark-textSecondary hover:text-light-textPrimary dark:hover:text-dark-textPrimary transition-colors"
+                            >
+                                {link.name}
+                            </a>
+                        ))}
                     </div>
 
-                    {/* Contact Info */}
-                    <div>
-                        <h4 className="font-heading font-semibold text-light-textPrimary dark:text-dark-textPrimary mb-4">
-                            Get in Touch
-                        </h4>
-                        <ul className="space-y-2 text-sm">
-                            <li>
-                                <a
-                                    href={`mailto:${personalInfo.email} `}
-                                    className="text-light-textSecondary dark:text-dark-textSecondary hover:text-light-primary dark:hover:text-dark-primary transition-colors"
-                                >
-                                    {personalInfo.email}
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href={`tel:${personalInfo.phone} `}
-                                    className="text-light-textSecondary dark:text-dark-textSecondary hover:text-light-primary dark:hover:text-dark-primary transition-colors"
-                                >
-                                    {personalInfo.phone}
-                                </a>
-                            </li>
-                            <li className="text-light-textSecondary dark:text-dark-textSecondary">
-                                {personalInfo.location}
-                            </li>
-                        </ul>
+                    {/* Right: Social + Scroll Top */}
+                    <div className="flex items-center gap-3">
+                        {socialLinks.map((social) => (
+                            <motion.a
+                                key={social.name}
+                                href={social.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-2 rounded-lg text-light-textSecondary dark:text-dark-textSecondary hover:text-light-textPrimary dark:hover:text-dark-textPrimary hover:bg-light-surface dark:hover:bg-dark-surface transition-all"
+                                aria-label={social.name}
+                                whileHover={{ y: -2 }}
+                                whileTap={{ scale: 0.9 }}
+                            >
+                                <social.icon className="w-4 h-4" />
+                            </motion.a>
+                        ))}
+
+                        {/* Scroll to top with progress ring */}
+                        <button
+                            onClick={scrollToTop}
+                            className="relative p-2 rounded-lg ml-2 group"
+                            aria-label="Back to top"
+                        >
+                            {/* Progress ring */}
+                            <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 36 36">
+                                <circle
+                                    cx="18" cy="18" r="15"
+                                    fill="none"
+                                    className="stroke-light-border dark:stroke-dark-border"
+                                    strokeWidth="1.5"
+                                />
+                                <motion.circle
+                                    cx="18" cy="18" r="15"
+                                    fill="none"
+                                    className="stroke-light-primary dark:stroke-dark-primary"
+                                    strokeWidth="1.5"
+                                    strokeLinecap="round"
+                                    style={{
+                                        pathLength: smoothProgress,
+                                        strokeDasharray: '0 1',
+                                    }}
+                                />
+                            </svg>
+                            <ArrowUp className="w-4 h-4 text-light-textSecondary dark:text-dark-textSecondary group-hover:text-light-textPrimary dark:group-hover:text-dark-textPrimary transition-colors relative z-10" />
+                        </button>
                     </div>
                 </div>
 
-                {/* Divider */}
-                <div className="border-t border-light-border dark:border-dark-border pt-8">
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                        {/* Copyright */}
-                        <div className="text-light-textSecondary dark:text-dark-textSecondary text-sm font-medium">
-                            © {new Date().getFullYear()} Shriram M. All rights reserved.
-                        </div>
-                        <motion.button
-                            onClick={scrollToTop}
-                            className="p-2 bg-gradient-to-r from-light-primary to-light-accent dark:from-dark-primary dark:to-dark-accent text-white rounded-soft hover:shadow-soft transition-all"
-                            whileHover={{ scale: 1.1, y: -2 }}
-                            whileTap={{ scale: 0.9 }}
-                            aria-label="Back to top"
-                        >
-                            <ArrowUp className="w-5 h-5" />
-                        </motion.button>
-                    </div>
+                {/* Copyright */}
+                <div className="mt-8 pt-6 border-t border-light-border dark:border-dark-border">
+                    <p className="text-xs text-light-textSecondary dark:text-dark-textSecondary text-center">
+                        © {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
+                    </p>
                 </div>
             </div>
         </footer>

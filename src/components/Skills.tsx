@@ -1,125 +1,79 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Database, Palette, Cloud } from 'lucide-react';
+import { Server, Monitor, Brain, Wrench } from 'lucide-react';
 import { skills } from '../data/portfolio';
+import TiltCard from './TiltCard';
+
+const categoryIcons: Record<string, React.ElementType> = {
+    'Backend': Server,
+    'Frontend': Monitor,
+    'AI / LLM': Brain,
+    'Tools / Infra': Wrench,
+};
 
 const Skills: React.FC = () => {
-    const categoryIcons: Record<string, any> = {
-        'Programming Languages': Code,
-        'Backend Technologies': Database,
-        'Frontend Technologies': Palette,
-        'Databases': Database,
-        'DevOps & Tools': Cloud,
-    };
-
     return (
         <section id="skills" className="section-padding">
             <div className="container-custom">
                 {/* Section Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    transition={{ duration: 0.5 }}
+                    className="mb-12"
                 >
-                    <span className="text-light-primary dark:text-dark-primary font-semibold text-sm uppercase tracking-wider">
-                        Expertise
-                    </span>
-                    <h2 className="text-3xl md:text-4xl font-heading font-bold mt-2 mb-4">
-                        Technical <span className="gradient-text">Skills</span>
-                    </h2>
-                    <p className="text-light-textSecondary dark:text-dark-textSecondary max-w-2xl mx-auto">
-                        Proficient in modern technologies and frameworks for building scalable applications
+                    <p className="section-label">Skills</p>
+                    <h2 className="section-title">Technical Skills</h2>
+                    <p className="section-subtitle">
+                        Focused expertise across backend engineering, frontend development, AI systems, and infrastructure.
                     </p>
                 </motion.div>
 
-                {/* Skills Grid */}
-                <div className="grid md:grid-cols-2 gap-8">
+                {/* Skills Grid — 4 columns */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {skills.map((skillCategory, categoryIndex) => {
-                        const Icon = categoryIcons[skillCategory.category] || Code;
-
+                        const Icon = categoryIcons[skillCategory.category] || Server;
                         return (
                             <motion.div
                                 key={skillCategory.category}
-                                initial={{ opacity: 0, y: 30 }}
+                                initial={{ opacity: 0, y: 24 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: categoryIndex * 0.1 }}
-                                className="glass-card p-8 hover-lift"
+                                transition={{ delay: categoryIndex * 0.1, duration: 0.4 }}
                             >
-                                {/* Category Header */}
-                                <div className="flex items-center gap-3 mb-6">
-                                    <div className="p-2.5 bg-gradient-to-br from-light-primary to-light-accent dark:from-dark-primary dark:to-dark-accent rounded-soft shadow-lg">
-                                        <Icon className="w-5 h-5 text-white" strokeWidth={2.5} />
+                                <TiltCard className="relative glass-card p-6 h-full" tiltAmount={5}>
+                                    <div className="flex items-center gap-2.5 mb-5">
+                                        <div className="p-2 bg-light-surface dark:bg-dark-bg rounded-lg border border-light-border dark:border-dark-border">
+                                            <Icon className="w-4 h-4 text-light-textPrimary dark:text-dark-textPrimary" />
+                                        </div>
+                                        <h3 className="text-sm font-bold text-light-textPrimary dark:text-dark-textPrimary">
+                                            {skillCategory.category}
+                                        </h3>
                                     </div>
-                                    <h3 className="text-xl font-heading font-bold text-light-textPrimary dark:text-white">
-                                        {skillCategory.category}
-                                    </h3>
-                                </div>
 
-                                {/* Skills List - Premium Pills */}
-                                <div className="flex flex-wrap gap-3">
-                                    {skillCategory.skills.map((skill, skillIndex) => (
-                                        <motion.div
-                                            key={skill.name}
-                                            initial={{ opacity: 0, scale: 0.8 }}
-                                            whileInView={{ opacity: 1, scale: 1 }}
-                                            viewport={{ once: true }}
-                                            transition={{ delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
-                                            whileHover={{ scale: 1.05 }}
-                                            className="group relative"
-                                        >
-                                            <div className="px-4 py-2 bg-light-surface dark:bg-dark-surface border-2 border-light-border dark:border-dark-accent/50 rounded-soft hover:border-light-primary dark:hover:border-dark-primary transition-colors cursor-default shadow-sm">
-                                                <span className="text-light-textPrimary dark:text-dark-textPrimary font-semibold text-sm group-hover:text-light-primary dark:group-hover:text-dark-primary transition-colors">
-                                                    {skill.name}
-                                                </span>
-                                            </div>
-                                        </motion.div>
-                                    ))}
-                                </div>
+                                    <div className="space-y-2">
+                                        {skillCategory.skills.map((skill, skillIndex) => (
+                                            <motion.div
+                                                key={skill.name}
+                                                initial={{ opacity: 0, x: -8 }}
+                                                whileInView={{ opacity: 1, x: 0 }}
+                                                viewport={{ once: true }}
+                                                transition={{
+                                                    delay: categoryIndex * 0.1 + skillIndex * 0.05,
+                                                    duration: 0.3,
+                                                }}
+                                                className="px-3 py-2 text-sm text-light-textSecondary dark:text-dark-textSecondary bg-light-surface dark:bg-dark-bg rounded-lg border border-light-border dark:border-dark-border hover:text-light-textPrimary dark:hover:text-dark-textPrimary hover:border-light-primary/30 dark:hover:border-dark-primary/30 hover:translate-x-1 transition-all cursor-default"
+                                            >
+                                                {skill.name}
+                                            </motion.div>
+                                        ))}
+                                    </div>
+                                </TiltCard>
                             </motion.div>
                         );
                     })}
                 </div>
-
-                {/* Additional Skills/Certifications */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.5 }}
-                    className="mt-12 glass-card p-8"
-                >
-                    <h3 className="text-xl font-heading font-semibold text-light-textPrimary dark:text-white mb-6 text-center">
-                        Additional Expertise
-                    </h3>
-                    <div className="flex flex-wrap justify-center gap-3">
-                        {[
-                            'Microservices Architecture',
-                            'RESTful APIs',
-                            'OAuth2 Security',
-                            'CI/CD Pipelines',
-                            'Agile/Scrum',
-                            'Test-Driven Development',
-                            'Code Reviews',
-                            'Technical Documentation',
-                            'Performance Optimization',
-                            'Database Design',
-                        ].map((skill, index) => (
-                            <motion.span
-                                key={skill}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.6 + index * 0.05 }}
-                                whileHover={{ scale: 1.1 }}
-                                className="px-4 py-2 bg-gradient-to-r from-light-primary/10 to-light-accent/10 dark:from-dark-primary/20 dark:to-dark-accent/20 border-2 border-light-primary/20 dark:border-dark-primary/40 rounded-soft text-light-textPrimary dark:text-dark-textPrimary font-semibold text-sm shadow-sm"
-                            >
-                                {skill}
-                            </motion.span>
-                        ))}
-                    </div>
-                </motion.div>
             </div>
         </section>
     );
