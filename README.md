@@ -1,73 +1,110 @@
-# React + TypeScript + Vite
+# Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern personal portfolio website built to showcase my projects, technical skills, experience, and developer journey in a clean and professional format.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Add your deployed link here:
 
-## React Compiler
+[Live Portfolio](https://personal-portfolio1-gamma.vercel.app/)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Overview
 
-## Expanding the ESLint configuration
+This project is my personal developer portfolio website. It is designed to present my work, background, and technical strengths in a structured and visually polished way.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The site highlights:
+- Featured projects
+- Technical skills
+- Internship and experience details
+- Certifications and achievements
+- Contact and social links
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+<p>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="36" alt="React" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="36" alt="TypeScript" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" height="36" alt="Vite" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="36" alt="HTML5" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height="36" alt="CSS3" />
+</p>
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Features
+
+- Clean and responsive design
+- Project showcase section
+- Skills and technology highlights
+- Experience and education presentation
+- Smooth navigation and portfolio-focused layout
+- Easy to customize for future updates
+
+## Project Structure
+
+```bash
+personal-portfolio1/
+├── public/
+├── src/
+│   ├── components/
+│   ├── assets/
+│   ├── pages/
+│   └── main.tsx
+├── index.html
+├── package.json
+└── vite.config.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 1. Clone the repository
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/shriram1206/personal-portfolio1.git
+cd personal-portfolio1
 ```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run the development server
+
+```bash
+npm run dev
+```
+
+### 4. Build for production
+
+```bash
+npm run build
+```
+
+## Deployment
+
+This portfolio can be deployed easily on:
+- Vercel
+- Netlify
+- GitHub Pages
+
+## Customization
+
+You can easily update:
+- Personal information
+- Featured projects
+- Skills section
+- Resume link
+- Contact links
+- Theme and styling
+
+## Purpose
+
+This project serves as both a portfolio website and a personal brand asset. It helps recruiters, collaborators, and other developers quickly understand the kind of work I build and the technologies I work with.
+
+## Author
+
+**Shri Ram**
+
+- GitHub: [shriram1206](https://github.com/shriram1206)
+- LinkedIn: [shriram-m-sde](https://linkedin.com/in/shriram-m-sde)
+- Email: [shriram.coder@gmail.com](mailto:shriram.coder@gmail.com)
