@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
                     {/* Headline with text reveal */}
                     <div className="mb-6">
                         <TextReveal
-                            text="Backend &"
+                            text="Full Stack &"
                             as="h1"
                             delay={0.3}
                             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] text-light-textPrimary dark:text-dark-textPrimary"

@@ -2,18 +2,18 @@ import type { Project, Experience, Skill } from '../types';
 
 export const personalInfo = {
     name: 'Shriram M',
-    title: 'Backend & AI Engineer',
+    title: 'Full Stack & AI Engineer',
     location: 'Tamil Nadu, India',
     phone: '+91 96008 35006',
     email: 'shriram.coder@gmail.com',
     linkedin: 'https://linkedin.com/in/shriram-m-sde',
     github: 'https://github.com/shriram1206',
-    tagline: 'Building backend systems, full-stack products, and AI-powered workflows using Java, Spring Boot, React, Next.js, and LLM tooling.',
-    description: "Final-year Computer Science graduate focused on practical engineering — from shipping FeedbackWall as a SaaS product to building RAG pipelines, Spring AI integrations, and backend workflows designed for real-world use.",
-    techStack: ['Java', 'Spring Boot', 'Spring AI', 'React', 'Next.js', 'Python', 'Docker'],
-    graduation: '2026 Graduate',
+    tagline: 'Architecting production SaaS platforms, RAG pipelines, and AI agents using Java, Spring Boot, React/Next.js, and LLM tooling.',
+    description: "Computer Science graduate with end-to-end production experience. I build scalable backends, full-stack SaaS applications like FeedbackWall, and intelligent AI features using GPT-4o, Spring AI, and pgvector.",
+    techStack: ['Java', 'Spring Boot', 'Spring AI', 'React', 'Next.js', 'Python', 'Docker', 'pgvector'],
+    graduation: 'B.E. Computer Science',
     cgpa: '77%',
-    resumeUrl: '/Shriram M - Resume May.pdf',
+    resumeUrl: '/Shriram M - full stack developer.pdf',
 };
 
 export const credibilityCards = [
@@ -44,7 +44,7 @@ export const credibilityCards = [
 ];
 
 export const heroChips = [
-    '2026 Graduate',
+    'Computer Science Graduate',
     'FeedbackWall shipped',
     'Spring Boot + AI workflows',
     'Open to full-time roles',
@@ -145,6 +145,68 @@ export const projects: Project[] = [
         date: 'September 2024',
         highlight: 'Role-based workflow automation with real-time notifications serving 500+ users.',
     },
+    {
+        id: 'second-brain',
+        title: 'Second Brain — RAG Chatbot',
+        description: 'A production-ready personal knowledge base chatbot powered by Llama-3 and RAG.',
+        longDescription: 'Engineered a robust AI assistant that ingests PDFs, web articles, and YouTube transcripts into a local ChromaDB vector store. Optimized for extreme memory efficiency (<512MB RAM) using FastAPI, LangChain, and HuggingFace Inference API with Maximal Marginal Relevance (MMR) retrieval.',
+        techStack: ['Python', 'FastAPI', 'LangChain', 'ChromaDB', 'Llama-3', 'HuggingFace'],
+        achievements: [
+            'Built a lightweight RAG pipeline with multi-modal data ingestion (PDFs, Web, YouTube transcripts)',
+            'Optimized architecture to run on 512MB cloud free-tiers using API-based embeddings',
+            'Implemented Maximal Marginal Relevance (MMR) retrieval and sliding window memory',
+            'Bypassed YouTube bot-detection via custom browser-header sessions'
+        ],
+        technicalDetails: [
+            'FastAPI Backend',
+            'ChromaDB Vector Store',
+            'LangChain Orchestration',
+            'Memory Optimization'
+        ],
+        metrics: [
+            { label: 'Type', value: 'AI Agent' },
+            { label: 'Memory', value: '<512MB RAM' },
+            { label: 'LLM', value: 'Llama-3' },
+            { label: 'Status', value: 'Live' },
+        ],
+        links: {
+            github: 'https://github.com/shriram1206/second-brain',
+        },
+        image: '/projects/second-brain.png',
+        date: '2026',
+        highlight: 'Highly optimized RAG architecture fitting within strict 512MB RAM constraints.',
+    },
+    {
+        id: 'ibaco-website',
+        title: 'Ibaco — Brand Website',
+        description: 'A modern, responsive landing page and brand website built for an ice cream shop.',
+        longDescription: 'Designed and developed a clean, attractive digital presence for an ice cream shop inspired by the Ibaco brand. Features responsive design, menu highlights, and seamless navigation.',
+        techStack: ['HTML5', 'CSS3', 'JavaScript', 'Vercel'],
+        achievements: [
+            'Developed a fully responsive frontend layout across mobile, tablet, and desktop',
+            'Designed a modern UI focusing on product imagery and brand identity',
+            'Deployed on Vercel for fast global performance'
+        ],
+        technicalDetails: [
+            'Responsive Design',
+            'Frontend Architecture',
+            'Vercel Deployment',
+            'UI/UX Design'
+        ],
+        metrics: [
+            { label: 'Type', value: 'Freelance' },
+            { label: 'Platform', value: 'Web' },
+            { label: 'Status', value: 'Live' },
+            { label: 'Deploy', value: 'Vercel' },
+        ],
+        links: {
+            live: 'https://ibaco-gules.vercel.app/',
+            github: 'https://github.com/shriram1206/ibaco',
+        },
+        image: '/projects/ibaco.png',
+        date: '2026',
+        highlight: 'Freelance frontend development focusing on brand identity and responsive design.',
+    }
 ];
 
 export const experiences: Experience[] = [
