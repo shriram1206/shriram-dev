@@ -13,6 +13,23 @@ const Hero: React.FC = () => {
         <section className="min-h-screen flex items-center pt-16">
             <div className="container-custom w-full">
                 <div className="max-w-3xl py-20 md:py-28">
+                    {/* Profile Picture */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                        transition={{ duration: 0.5 }}
+                        className="mb-8"
+                    >
+                        <div className="relative inline-block group">
+                            <div className="absolute -inset-0.5 bg-gradient-to-r from-light-primary/30 to-light-secondary/30 dark:from-dark-primary/30 dark:to-dark-secondary/30 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                            <img
+                                src="/projects/profile.jpg"
+                                alt={personalInfo.name}
+                                className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover border border-light-border dark:border-dark-border shadow-sm bg-light-surface dark:bg-dark-surface"
+                            />
+                        </div>
+                    </motion.div>
+
                     {/* Eyebrow */}
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}

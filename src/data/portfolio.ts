@@ -206,6 +206,37 @@ export const projects: Project[] = [
         image: '/projects/ibaco.png',
         date: '2026',
         highlight: 'Freelance frontend development focusing on brand identity and responsive design.',
+    },
+    {
+        id: 'prompt-forge',
+        title: 'Prompt Forge — AI Synthesis Engine',
+        description: 'A full-stack SaaS application that acts as a "compiler for AI" by synthesizing vague ideas into highly structured, FAANG-grade LLM prompts.',
+        longDescription: 'Architected a custom Meta-Framework Synthesis (MFS) engine that automatically applies over 78 cognitive frameworks (like Tree-of-Thought, SOLVE, and RACE) based on task complexity. Features a zero-dependency frontend and a highly secure FastAPI backend with SaaS tiering logic.',
+        techStack: ['Python', 'FastAPI', 'Vanilla JS', 'Supabase', 'PostgreSQL', 'Groq API', 'Llama 3', 'Render'],
+        achievements: [
+            'Designed dynamic metaprompting engine routing through Groq Llama 3 70B with sub-200ms latency',
+            'Enforced strict behavioral constraints and anti-hallucination gates to guarantee XML-tagged outputs',
+            'Integrated Supabase with decoupled JWT keys and strict Row-Level Security (RLS) policies to prevent API abuse',
+            'Engineered complex SaaS tiering and rate-limiting logic dynamically gating premium frameworks'
+        ],
+        technicalDetails: [
+            'Meta-Framework Synthesis Engine',
+            'Sub-200ms Groq Integration',
+            'Supabase RLS & Auth',
+            'Dynamic SaaS Tiering'
+        ],
+        metrics: [
+            { label: 'Latency', value: '<200ms' },
+            { label: 'LLM Model', value: 'Llama 3 70B' },
+            { label: 'Frameworks', value: '78+' },
+            { label: 'Status', value: 'Live SaaS' },
+        ],
+        links: {
+            live: 'https://prompt-forge-qd29.onrender.com'
+        },
+        image: '/projects/prompt-forge.png',
+        date: '2026',
+        highlight: 'Full-stack AI SaaS featuring a sub-200ms metaprompting engine and strict database security.',
     }
 ];
 

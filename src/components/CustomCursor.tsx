@@ -53,7 +53,7 @@ const CustomCursor: React.FC = () => {
                     height: isHovering ? 48 : 32,
                     opacity: isVisible ? 1 : 0,
                 }}
-                transition={{ type: 'spring', stiffness: 250, damping: 20, mass: 0.5 }}
+                transition={{ type: 'spring', stiffness: 700, damping: 30, mass: 0.1 }}
             >
                 <div className={`w-full h-full rounded-full border ${isHovering ? 'border-white/60' : 'border-white/30'} transition-colors duration-200`} />
             </motion.div>
@@ -65,7 +65,7 @@ const CustomCursor: React.FC = () => {
                     y: y - 3,
                     opacity: isVisible ? 1 : 0,
                 }}
-                transition={{ type: 'spring', stiffness: 500, damping: 25, mass: 0.3 }}
+                transition={{ type: 'tween', duration: 0 }}
             >
                 <div className="w-1.5 h-1.5 rounded-full bg-white" />
             </motion.div>
