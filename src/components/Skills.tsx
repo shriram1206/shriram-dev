@@ -5,10 +5,10 @@ import { skills } from '../data/portfolio';
 import TiltCard from './TiltCard';
 
 const categoryIcons: Record<string, React.ElementType> = {
-    'Backend': Server,
-    'Frontend': Monitor,
-    'AI / LLM': Brain,
-    'Tools / Infra': Wrench,
+    'AI & Agent Systems': Brain,
+    'AI Infrastructure': Server,
+    'Frontend Integration': Monitor,
+    'Tools & DevOps': Wrench,
 };
 
 const Skills: React.FC = () => {
@@ -26,7 +26,7 @@ const Skills: React.FC = () => {
                     <p className="section-label">Skills</p>
                     <h2 className="section-title">Technical Skills</h2>
                     <p className="section-subtitle">
-                        Focused expertise across backend engineering, frontend development, AI systems, and infrastructure.
+                        Focused expertise across cognitive agent architectures, AI infrastructure orchestration, and user interfaces.
                     </p>
                 </motion.div>
 

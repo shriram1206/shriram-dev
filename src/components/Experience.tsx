@@ -18,7 +18,7 @@ const Experience: React.FC = () => {
                     <p className="section-label">Experience</p>
                     <h2 className="section-title">Experience</h2>
                     <p className="section-subtitle">
-                        Real-world engineering exposure across AI, backend systems, and professional development workflows.
+                        Real-world engineering exposure across applied AI, RAG integrations, and agentic workflows.
                     </p>
                 </motion.div>
 

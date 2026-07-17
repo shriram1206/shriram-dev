@@ -6,8 +6,8 @@ const About: React.FC = () => {
     const quickFacts = [
         { icon: MapPin, label: 'Based in', value: 'Tamil Nadu, India' },
         { icon: GraduationCap, label: 'Education', value: '2026 CS Graduate' },
-        { icon: Briefcase, label: 'Interested in', value: 'Backend / AI / Full Stack roles' },
-        { icon: Code2, label: 'Core stack', value: 'Java, Spring Boot, React, Next.js, Python' },
+        { icon: Briefcase, label: 'Interested in', value: 'Applied AI & LLM Systems' },
+        { icon: Code2, label: 'Core stack', value: 'Python, Spring AI, LangChain, React' },
         { icon: ArrowUpRight, label: 'Status', value: 'Open to full-time opportunities' },
     ];
 
@@ -36,7 +36,7 @@ const About: React.FC = () => {
                         <p className="text-base md:text-lg text-light-textSecondary dark:text-dark-textSecondary leading-relaxed">
                             Shriram is a software engineer focused on{' '}
                             <span className="text-light-textPrimary dark:text-dark-textPrimary font-medium">
-                                backend systems, full-stack product development, and applied AI
+                                applied AI, LLM orchestration, and intelligent agent systems
                             </span>
                             . His work centers on turning complex ideas into practical software — especially where
                             APIs, automation, data flow, and LLM-powered features come together.
@@ -44,7 +44,7 @@ const About: React.FC = () => {
                         <p className="text-base md:text-lg text-light-textSecondary dark:text-dark-textSecondary leading-relaxed">
                             He is currently looking for entry-level roles where he can contribute to{' '}
                             <span className="text-light-textPrimary dark:text-dark-textPrimary font-medium">
-                                backend engineering, AI applications, or product-focused full-stack teams
+                                AI engineering, applied RAG architectures, or cognitive search teams
                             </span>.
                         </p>
                         <p className="text-base text-light-textSecondary dark:text-dark-textSecondary leading-relaxed">

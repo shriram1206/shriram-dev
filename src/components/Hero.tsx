@@ -39,14 +39,14 @@ const Hero: React.FC = () => {
                     >
                         <span className="chip">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-2 animate-pulse" />
-                            Available for Backend / Full Stack / AI Engineering Roles
+                            Available for Applied AI / LLM / Agent Engineering Roles
                         </span>
                     </motion.div>
 
                     {/* Headline with text reveal */}
                     <div className="mb-6">
                         <TextReveal
-                            text="Full Stack &"
+                            text="Applied"
                             as="h1"
                             delay={0.3}
                             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] text-light-textPrimary dark:text-dark-textPrimary"

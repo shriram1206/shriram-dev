@@ -2,15 +2,15 @@ import type { Project, Experience, Skill } from '../types';
 
 export const personalInfo = {
     name: 'Shriram M',
-    title: 'Full Stack & AI Engineer',
+    title: 'AI Engineer',
     location: 'Tamil Nadu, India',
     phone: '+91 96008 35006',
     email: 'shriram.coder@gmail.com',
     linkedin: 'https://linkedin.com/in/shriram-m-sde',
     github: 'https://github.com/shriram1206',
-    tagline: 'Architecting production SaaS platforms, RAG pipelines, and AI agents using Java, Spring Boot, React/Next.js, and LLM tooling.',
-    description: "Computer Science graduate with end-to-end production experience. I build scalable backends, full-stack SaaS applications like FeedbackWall, and intelligent AI features using GPT-4o, Spring AI, and pgvector.",
-    techStack: ['Java', 'Spring Boot', 'Spring AI', 'React', 'Next.js', 'Python', 'Docker', 'pgvector'],
+    tagline: 'Architecting production RAG pipelines, cognitive search engines, and intelligent multi-agent workflows.',
+    description: "Computer Science graduate specializing in applied AI and agentic systems. Experienced in implementing production-grade RAG, custom metaprompting engines, and orchestrating LLM tool-calling integrations using Python, Spring AI, and vector databases.",
+    techStack: ['Python', 'Spring AI', 'LangChain', 'Llama-3', 'pgvector', 'ChromaDB', 'Java', 'Spring Boot'],
     graduation: 'B.E. Computer Science',
     cgpa: '77%',
     resumeUrl: '/Shriram M - full stack developer.pdf',
@@ -18,9 +18,9 @@ export const personalInfo = {
 
 export const credibilityCards = [
     {
-        id: 'feedbackwall-shipped',
-        title: 'FeedbackWall Shipped',
-        description: 'Built and shipped a live SaaS product with real beta users',
+        id: 'prompt-forge-shipped',
+        title: 'Prompt Forge Shipped',
+        description: 'Built and shipped a live metaprompting SaaS using Groq & Llama-3',
         icon: 'rocket',
     },
     {
@@ -32,118 +32,55 @@ export const credibilityCards = [
     {
         id: 'spring-ai-rag',
         title: 'Spring AI + RAG Systems',
-        description: 'Hands-on experience building AI backend integrations',
+        description: 'Hands-on experience building cognitive search integrations',
         icon: 'cpu',
     },
     {
         id: 'open-to-roles',
         title: 'Open to Full-Time Roles',
-        description: 'Backend, AI Backend, and Full Stack engineering positions',
+        description: 'AI Engineering, Applied AI, and LLM Developer positions',
         icon: 'target',
     },
 ];
 
 export const heroChips = [
     'Computer Science Graduate',
-    'FeedbackWall shipped',
-    'Spring Boot + AI workflows',
-    'Open to full-time roles',
+    'Prompt Forge SaaS shipped',
+    'RAG & Agentic Workflows',
+    'Open to AI Engineering roles',
 ];
 
 export const projects: Project[] = [
     {
-        id: 'feedbackwall',
-        title: 'FeedbackWall',
-        description: 'A SaaS product for collecting, organizing, and prioritizing user feedback and feature requests.',
-        longDescription: 'Solo-founded and shipped a Canny alternative — a production-grade feedback management platform with multi-tenant architecture, real-time notifications, and embeddable feedback widgets. Built with Next.js and Supabase, focused on practical product workflow and clean MVP execution.',
-        techStack: ['Next.js', 'React', 'TypeScript', 'Supabase', 'PostgreSQL', 'Vercel', 'Tailwind CSS'],
+        id: 'prompt-forge',
+        title: 'Prompt Forge — AI Synthesis Engine',
+        description: 'A full-stack SaaS application that acts as a "compiler for AI" by synthesizing vague ideas into highly structured, FAANG-grade LLM prompts.',
+        longDescription: 'Architected a custom Meta-Framework Synthesis (MFS) engine that automatically applies over 78 cognitive frameworks (like Tree-of-Thought, SOLVE, and RACE) based on task complexity. Features a zero-dependency frontend and a highly secure FastAPI backend with SaaS tiering logic.',
+        techStack: ['Python', 'FastAPI', 'Vanilla JS', 'Supabase', 'PostgreSQL', 'Groq API', 'Llama 3', 'Render'],
         achievements: [
-            'Solo-founded and shipped a public SaaS feedback platform with feature voting and changelog',
-            'Designed multi-tenant Supabase architecture with row-level security for data isolation',
-            'Built embeddable widget for seamless third-party integration',
-            'Deployed on Vercel with full CI/CD pipeline and real beta users onboarded',
+            'Designed dynamic metaprompting engine routing through Groq Llama 3 70B with sub-200ms latency',
+            'Enforced strict behavioral constraints and anti-hallucination gates to guarantee XML-tagged outputs',
+            'Integrated Supabase with decoupled JWT keys and strict Row-Level Security (RLS) policies to prevent API abuse',
+            'Engineered complex SaaS tiering and rate-limiting logic dynamically gating premium frameworks'
         ],
         technicalDetails: [
-            'Multi-tenant architecture with RLS',
-            'Embeddable widget technology',
-            'Full CI/CD pipeline',
-            'Real-time notifications system',
+            'Meta-Framework Synthesis Engine',
+            'Sub-200ms Groq Integration',
+            'Supabase RLS & Auth',
+            'Dynamic SaaS Tiering'
         ],
         metrics: [
-            { label: 'Status', value: 'Live Production' },
-            { label: 'Architecture', value: 'Multi-tenant' },
-            { label: 'Build', value: 'Solo-founded' },
-            { label: 'Deploy', value: 'Vercel CI/CD' },
+            { label: 'Latency', value: '<200ms' },
+            { label: 'LLM Model', value: 'Llama 3 70B' },
+            { label: 'Frameworks', value: '78+' },
+            { label: 'Status', value: 'Live SaaS' },
         ],
         links: {
-            live: 'https://feedbackwall-mu.vercel.app/',
-            github: '#',
+            live: 'https://prompt-forge-qd29.onrender.com'
         },
-        image: '/projects/feedbackwall.png',
+        image: '/projects/prompt-forge.png',
         date: '2026',
-        highlight: 'Authentication, structured feedback pipeline, prioritization workflow, and SaaS-style UX.',
-    },
-    {
-        id: 'quro-db',
-        title: 'Quro — AI Database Assistant',
-        description: 'An intelligent Spring Boot application that translates natural language questions into executable SQL queries using GPT-4o.',
-        longDescription: 'Quro acts as an AI-powered database assistant, allowing users to interact with their MySQL databases using plain English. Built with Spring Boot and powered by OpenAI\'s GPT-4o model, it bridges the gap between non-technical users and database management.',
-        techStack: ['Java 17', 'Spring Boot 3.5+', 'MySQL', 'Spring Data JPA', 'OpenAI API (GPT-4o)', 'Maven'],
-        achievements: [
-            'Architected a RESTful backend converting natural language into accurate SQL queries',
-            'Integrated OpenAI GPT-4o model for intelligent query translation',
-            'Implemented automatic database initialization with schema provisioning on startup',
-            'Built a clean, responsive web interface for querying and viewing results interactively',
-        ],
-        technicalDetails: [
-            'Spring Boot API & Web Interface',
-            'GPT-4o natural language processing',
-            'Secure credential management',
-            'Auto schema provisioning',
-        ],
-        metrics: [
-            { label: 'Backend', value: 'Spring Boot' },
-            { label: 'AI Model', value: 'GPT-4o' },
-            { label: 'Database', value: 'MySQL' },
-            { label: 'Status', value: 'Completed' },
-        ],
-        links: {
-            github: 'https://github.com/shriram1206/quro-db',
-        },
-        image: '/projects/ai-agent.png',
-        date: '2026',
-        highlight: 'Natural language to SQL translation using LLM-powered backend with Spring Boot.',
-    },
-    {
-        id: 'multigate-eduflow',
-        title: 'Multigate EduFlow',
-        description: 'Automated leave management system serving 500+ users with 80% reduction in approval turnaround time.',
-        longDescription: 'A backend-focused leave request management system with role-based access control, JWT authentication, and real-time notifications. Reduced approval turnaround from 5 days to 24 hours.',
-        techStack: ['React', 'Node.js', 'Express', 'MySQL', 'JWT Authentication'],
-        achievements: [
-            'Architected secure 3-tier workflow with role-based access control and JWT authentication',
-            'Optimized MySQL queries to support 500+ concurrent users with stable performance',
-            'Built real-time notification system for approval workflow updates',
-            'Reduced approval turnaround time by 80% — from 5 days to 24 hours',
-        ],
-        technicalDetails: [
-            'Backend MERN architecture',
-            'MySQL with optimized queries',
-            'JWT-based authentication',
-            'Role-based authorization',
-        ],
-        metrics: [
-            { label: 'Active Users', value: '500+' },
-            { label: 'Faster Approvals', value: '80%' },
-            { label: 'Turnaround', value: '24hrs' },
-            { label: 'Satisfaction', value: '95%' },
-        ],
-        links: {
-            github: '#',
-        },
-        image: '/projects/eduflow.png',
-        date: 'September 2024',
-        highlight: 'Role-based workflow automation with real-time notifications serving 500+ users.',
+        highlight: 'Full-stack AI SaaS featuring a sub-200ms metaprompting engine and strict database security.',
     },
     {
         id: 'second-brain',
@@ -177,66 +114,35 @@ export const projects: Project[] = [
         highlight: 'Highly optimized RAG architecture fitting within strict 512MB RAM constraints.',
     },
     {
-        id: 'ibaco-website',
-        title: 'Ibaco — Brand Website',
-        description: 'A modern, responsive landing page and brand website built for an ice cream shop.',
-        longDescription: 'Designed and developed a clean, attractive digital presence for an ice cream shop inspired by the Ibaco brand. Features responsive design, menu highlights, and seamless navigation.',
-        techStack: ['HTML5', 'CSS3', 'JavaScript', 'Vercel'],
+        id: 'quro-db',
+        title: 'Quro — AI Database Assistant',
+        description: 'An intelligent Spring Boot application that translates natural language questions into executable SQL queries using GPT-4o.',
+        longDescription: 'Quro acts as an AI-powered database assistant, allowing users to interact with their MySQL databases using plain English. Built with Spring Boot and powered by OpenAI\'s GPT-4o model, it bridges the gap between non-technical users and database management.',
+        techStack: ['Java 17', 'Spring Boot 3.5+', 'MySQL', 'Spring Data JPA', 'OpenAI API (GPT-4o)', 'Maven'],
         achievements: [
-            'Developed a fully responsive frontend layout across mobile, tablet, and desktop',
-            'Designed a modern UI focusing on product imagery and brand identity',
-            'Deployed on Vercel for fast global performance'
+            'Architected a RESTful backend converting natural language into accurate SQL queries',
+            'Integrated OpenAI GPT-4o model for intelligent query translation',
+            'Implemented automatic database initialization with schema provisioning on startup',
+            'Built a clean, responsive web interface for querying and viewing results interactively',
         ],
         technicalDetails: [
-            'Responsive Design',
-            'Frontend Architecture',
-            'Vercel Deployment',
-            'UI/UX Design'
+            'Spring Boot API & Web Interface',
+            'GPT-4o natural language processing',
+            'Secure credential management',
+            'Auto schema provisioning',
         ],
         metrics: [
-            { label: 'Type', value: 'Freelance' },
-            { label: 'Platform', value: 'Web' },
-            { label: 'Status', value: 'Live' },
-            { label: 'Deploy', value: 'Vercel' },
+            { label: 'Backend', value: 'Spring Boot' },
+            { label: 'AI Model', value: 'GPT-4o' },
+            { label: 'Database', value: 'MySQL' },
+            { label: 'Status', value: 'Completed' },
         ],
         links: {
-            live: 'https://ibaco-gules.vercel.app/',
-            github: 'https://github.com/shriram1206/ibaco',
+            github: 'https://github.com/shriram1206/quro-db',
         },
-        image: '/projects/ibaco.png',
+        image: '/projects/ai-agent.png',
         date: '2026',
-        highlight: 'Freelance frontend development focusing on brand identity and responsive design.',
-    },
-    {
-        id: 'prompt-forge',
-        title: 'Prompt Forge — AI Synthesis Engine',
-        description: 'A full-stack SaaS application that acts as a "compiler for AI" by synthesizing vague ideas into highly structured, FAANG-grade LLM prompts.',
-        longDescription: 'Architected a custom Meta-Framework Synthesis (MFS) engine that automatically applies over 78 cognitive frameworks (like Tree-of-Thought, SOLVE, and RACE) based on task complexity. Features a zero-dependency frontend and a highly secure FastAPI backend with SaaS tiering logic.',
-        techStack: ['Python', 'FastAPI', 'Vanilla JS', 'Supabase', 'PostgreSQL', 'Groq API', 'Llama 3', 'Render'],
-        achievements: [
-            'Designed dynamic metaprompting engine routing through Groq Llama 3 70B with sub-200ms latency',
-            'Enforced strict behavioral constraints and anti-hallucination gates to guarantee XML-tagged outputs',
-            'Integrated Supabase with decoupled JWT keys and strict Row-Level Security (RLS) policies to prevent API abuse',
-            'Engineered complex SaaS tiering and rate-limiting logic dynamically gating premium frameworks'
-        ],
-        technicalDetails: [
-            'Meta-Framework Synthesis Engine',
-            'Sub-200ms Groq Integration',
-            'Supabase RLS & Auth',
-            'Dynamic SaaS Tiering'
-        ],
-        metrics: [
-            { label: 'Latency', value: '<200ms' },
-            { label: 'LLM Model', value: 'Llama 3 70B' },
-            { label: 'Frameworks', value: '78+' },
-            { label: 'Status', value: 'Live SaaS' },
-        ],
-        links: {
-            live: 'https://prompt-forge-qd29.onrender.com'
-        },
-        image: '/projects/prompt-forge.png',
-        date: '2026',
-        highlight: 'Full-stack AI SaaS featuring a sub-200ms metaprompting engine and strict database security.',
+        highlight: 'Natural language to SQL translation using LLM-powered backend with Spring Boot.',
     }
 ];
 
@@ -281,63 +187,64 @@ export const experiences: Experience[] = [
 
 export const skills: Skill[] = [
     {
-        category: 'Backend',
+        category: 'AI & Agent Systems',
         skills: [
-            { name: 'Java' },
-            { name: 'Spring Boot' },
-            { name: 'REST APIs' },
-            { name: 'SQL' },
-            { name: 'Microservices' },
-            { name: 'Node.js' },
+            { name: 'Spring AI & Python' },
+            { name: 'RAG Architectures' },
+            { name: 'LangChain & LlamaIndex' },
+            { name: 'Prompt Engineering' },
+            { name: 'Agentic Workflows' },
+            { name: 'Vector DBs (Chroma/pgvector)' },
         ],
     },
     {
-        category: 'Frontend',
+        category: 'AI Infrastructure',
+        skills: [
+            { name: 'Java & Spring Boot' },
+            { name: 'FastAPI & Node.js' },
+            { name: 'REST & GraphQL APIs' },
+            { name: 'Vector Search & SQL' },
+            { name: 'Microservices' },
+            { name: 'JSON-RPC / SSE' },
+        ],
+    },
+    {
+        category: 'Frontend Integration',
         skills: [
             { name: 'React' },
             { name: 'Next.js' },
-            { name: 'JavaScript' },
             { name: 'TypeScript' },
-            { name: 'HTML / CSS' },
+            { name: 'JavaScript' },
+            { name: 'Tailwind CSS' },
         ],
     },
     {
-        category: 'AI / LLM',
+        category: 'Tools & DevOps',
         skills: [
-            { name: 'Spring AI' },
-            { name: 'Python' },
-            { name: 'RAG' },
-            { name: 'Prompt Engineering' },
-            { name: 'Agent Workflows' },
-        ],
-    },
-    {
-        category: 'Tools / Infra',
-        skills: [
-            { name: 'Git' },
+            { name: 'Git & GitHub' },
             { name: 'Docker' },
-            { name: 'Postman' },
-            { name: 'Supabase' },
-            { name: 'Vercel' },
+            { name: 'Supabase & Firebase' },
+            { name: 'Vercel & Render' },
             { name: 'Maven' },
+            { name: 'Postman' },
         ],
     },
 ];
 
 export const currentlyBuilding = [
     {
-        id: 'feedbackwall-improvements',
-        title: 'Improving FeedbackWall as a product',
-        description: 'Iterating on features, UX, and growth for the live SaaS platform.',
+        id: 'prompt-forge-agents',
+        title: 'Multi-Agent Simulations in Prompt Forge',
+        description: 'Adding a sandbox to evaluate generated prompts against multiple LLM agent personas in parallel.',
     },
     {
         id: 'agentic-workflows',
-        title: 'Exploring backend AI workflows and agentic automation',
-        description: 'Building practical systems around LLM orchestration and tool-calling patterns.',
+        title: 'Exploring cognitive frameworks & agentic workflows',
+        description: 'Building practical systems around LLM orchestration, tool-calling, and custom reflection patterns.',
     },
     {
         id: 'spring-ai-tooling',
-        title: 'Building systems around Spring AI, RAG, and developer tooling',
-        description: 'Creating reusable backend components for AI-powered applications.',
+        title: 'Applied RAG pipelines & vector DB optimizations',
+        description: 'Testing Maximal Marginal Relevance (MMR) and hybrid keyword-vector search configurations.',
     },
 ];

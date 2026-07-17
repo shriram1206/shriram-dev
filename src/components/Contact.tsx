@@ -48,9 +48,9 @@ const Contact: React.FC = () => {
                         <p className="section-label">Contact</p>
                         <h2 className="section-title">Let's Build Something Useful</h2>
                         <p className="section-subtitle mb-10">
-                            Open to backend, AI backend, and full-stack engineering opportunities.
-                            Interested in roles where product thinking, backend architecture,
-                            and practical AI engineering matter.
+                            Open to AI engineering, LLM application development, and agentic workflow opportunities.
+                            Interested in roles where cognitive architecture, system safety,
+                            and practical AI integration matter.
                         </p>
                     </motion.div>
 

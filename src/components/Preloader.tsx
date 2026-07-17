@@ -40,7 +40,7 @@ const Preloader: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
                                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                                 className="text-sm text-light-textSecondary dark:text-dark-textSecondary mt-2 tracking-wide"
                             >
-                                Backend & AI Engineer
+                                AI Engineer
                             </motion.p>
                         )}
                     </AnimatePresence>

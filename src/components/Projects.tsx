@@ -5,8 +5,8 @@ import { projects } from '../data/portfolio';
 import TiltCard from './TiltCard';
 
 const Projects: React.FC = () => {
-    const featuredProjects = projects.filter(p => p.id === 'feedbackwall' || p.id === 'prompt-forge');
-    const otherProjects = projects.filter(p => p.id !== 'feedbackwall' && p.id !== 'prompt-forge');
+    const featuredProjects = projects.filter(p => p.id === 'prompt-forge' || p.id === 'second-brain');
+    const otherProjects = projects.filter(p => p.id !== 'prompt-forge' && p.id !== 'second-brain');
 
     return (
         <section id="projects" className="section-padding bg-light-surface/50 dark:bg-dark-surface/20">
@@ -22,7 +22,7 @@ const Projects: React.FC = () => {
                     <p className="section-label">Projects</p>
                     <h2 className="section-title">Featured Projects</h2>
                     <p className="section-subtitle">
-                        Curated projects that demonstrate product thinking, backend architecture, and practical engineering.
+                        Curated projects demonstrating applied AI architectures, metaprompt optimization, and RAG systems.
                     </p>
                 </motion.div>
 
