@@ -52,6 +52,37 @@ export const heroChips = [
 
 export const projects: Project[] = [
     {
+        id: 'axiom-multi-agent-rag',
+        title: 'Axiom — Multi-Agent RAG Boardroom',
+        description: 'A production-grade multi-agent RAG dashboard simulating a corporate C-suite with department-scoped vector security policies and boardroom memory.',
+        longDescription: 'Simulates a real corporate executive structure with three distinct AI agents—Maya (Marketing), Vibhishana (HR), and Kubera (Finance). Each executive is isolated at the ChromaDB vector retrieval layer based on metadata-filtering, reasoning collectively across a shared memory state to negotiate cross-department proposals.',
+        techStack: ['Python', 'FastAPI', 'React', 'ChromaDB', 'Groq API', 'Llama 3.1', 'asyncio', 'Tailwind CSS'],
+        achievements: [
+            'Architected department-scoped database-level isolation preventing cross-agent document leakage',
+            'Implemented concurrent executive agent reasoning using python asyncio.gather for sub-second orchestration',
+            'Designed a boardroom shared-memory architecture where agents react and push back dynamically to each other\'s approvals',
+            'Built an interactive dashboard allowing manual simulation of corporate boardroom policies and constraints'
+        ],
+        technicalDetails: [
+            'ChromaDB Metadata Filtering',
+            'Shared Conversation Memory',
+            'Concurrent Async Agents',
+            'Executive Policy Enforcer'
+        ],
+        metrics: [
+            { label: 'Type', value: 'Multi-Agent RAG' },
+            { label: 'LLM Model', value: 'Llama 3.1 8B' },
+            { label: 'Database', value: 'ChromaDB (Isolated)' },
+            { label: 'Orchestration', value: 'asyncio.gather' }
+        ],
+        links: {
+            github: 'https://github.com/shriram1206/axiom-multi-agent-rag'
+        },
+        image: '/projects/personal-ai.png',
+        date: '2026',
+        highlight: 'Strict vector-level metadata security isolation coupled with collective multi-agent boardroom reasoning.'
+    },
+    {
         id: 'prompt-forge',
         title: 'Prompt Forge — AI Synthesis Engine',
         description: 'A full-stack SaaS application that acts as a "compiler for AI" by synthesizing vague ideas into highly structured, FAANG-grade LLM prompts.',

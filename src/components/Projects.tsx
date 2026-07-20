@@ -5,8 +5,8 @@ import { projects } from '../data/portfolio';
 import TiltCard from './TiltCard';
 
 const Projects: React.FC = () => {
-    const featuredProjects = projects.filter(p => p.id === 'prompt-forge' || p.id === 'second-brain');
-    const otherProjects = projects.filter(p => p.id !== 'prompt-forge' && p.id !== 'second-brain');
+    const featuredProjects = projects.filter(p => p.id === 'axiom-multi-agent-rag' || p.id === 'prompt-forge');
+    const otherProjects = projects.filter(p => p.id !== 'axiom-multi-agent-rag' && p.id !== 'prompt-forge');
 
     return (
         <section id="projects" className="section-padding bg-light-surface/50 dark:bg-dark-surface/20">
