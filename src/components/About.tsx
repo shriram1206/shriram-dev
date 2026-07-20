@@ -5,7 +5,7 @@ import { MapPin, GraduationCap, Briefcase, Code2, ArrowUpRight } from 'lucide-re
 const About: React.FC = () => {
     const quickFacts = [
         { icon: MapPin, label: 'Based in', value: 'Tamil Nadu, India' },
-        { icon: GraduationCap, label: 'Education', value: '2026 CS Graduate' },
+        { icon: GraduationCap, label: 'Education', value: 'B.E. CS (Graduated March 2026)' },
         { icon: Briefcase, label: 'Interested in', value: 'Applied AI & LLM Systems' },
         { icon: Code2, label: 'Core stack', value: 'Python, Spring AI, LangChain, React' },
         { icon: ArrowUpRight, label: 'Status', value: 'Open to full-time opportunities' },
@@ -34,23 +34,23 @@ const About: React.FC = () => {
                         className="md:col-span-3 space-y-5"
                     >
                         <p className="text-base md:text-lg text-light-textSecondary dark:text-dark-textSecondary leading-relaxed">
-                            Shriram is a software engineer focused on{' '}
+                            I am an AI engineer focused on{' '}
                             <span className="text-light-textPrimary dark:text-dark-textPrimary font-medium">
                                 applied AI, LLM orchestration, and intelligent agent systems
                             </span>
-                            . His work centers on turning complex ideas into practical software — especially where
+                            . My work centers on turning complex ideas into practical software — especially where
                             APIs, automation, data flow, and LLM-powered features come together.
                         </p>
                         <p className="text-base md:text-lg text-light-textSecondary dark:text-dark-textSecondary leading-relaxed">
-                            He is currently looking for entry-level roles where he can contribute to{' '}
+                            I am currently looking for full-time roles where I can contribute to{' '}
                             <span className="text-light-textPrimary dark:text-dark-textPrimary font-medium">
                                 AI engineering, applied RAG architectures, or cognitive search teams
                             </span>.
                         </p>
                         <p className="text-base text-light-textSecondary dark:text-dark-textSecondary leading-relaxed">
-                            From shipping FeedbackWall as a solo-founded SaaS product to building RAG pipelines
-                            and Spring AI integrations during his internship at Servimos Technologies, his
-                            experience reflects a focus on practical engineering and real-world problem solving.
+                            From building and shipping Prompt Forge as a live metaprompting SaaS to developing
+                            production RAG pipelines and SSE-based tool integrations during my internship at Servimos Technologies,
+                            my experience reflects a focus on practical engineering and real-world problem solving.
                         </p>
                     </motion.div>
 

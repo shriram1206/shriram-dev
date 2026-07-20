@@ -61,7 +61,7 @@ const Projects: React.FC = () => {
                                     {/* Highlight */}
                                     {featuredProject.highlight && (
                                         <div className="text-xs text-light-textSecondary dark:text-dark-textSecondary bg-light-surface dark:bg-dark-bg p-3 rounded-lg border border-light-border dark:border-dark-border mb-4 leading-relaxed">
-                                            <span className="font-semibold text-light-textPrimary dark:text-dark-textPrimary">Highlights: </span>
+                                            <span className="font-semibold text-light-textPrimary dark:text-dark-textPrimary">Key Differentiator: </span>
                                             {featuredProject.highlight}
                                         </div>
                                     )}
@@ -143,7 +143,7 @@ const Projects: React.FC = () => {
                                     {/* Highlight */}
                                     {project.highlight && (
                                         <div className="text-xs text-light-textSecondary dark:text-dark-textSecondary bg-light-surface dark:bg-dark-bg p-2.5 rounded-lg border border-light-border dark:border-dark-border mb-3 leading-relaxed">
-                                            <span className="font-semibold text-light-textPrimary dark:text-dark-textPrimary">Why it matters: </span>
+                                            <span className="font-semibold text-light-textPrimary dark:text-dark-textPrimary">Key Differentiator: </span>
                                             {project.highlight}
                                         </div>
                                     )}

@@ -148,9 +148,11 @@ const Hero: React.FC = () => {
                         transition={{ delay: 1.5 }}
                         className="mt-10"
                     >
-                        <p className="text-xs text-light-textSecondary/50 dark:text-dark-textSecondary/50 flex items-center gap-1.5">
+                        <p className="text-xs text-light-textSecondary/50 dark:text-dark-textSecondary/50 flex items-center gap-1.5 flex-wrap">
                             Press
                             <kbd className="px-1.5 py-0.5 text-[10px] font-mono bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border rounded">⌘K</kbd>
+                            or
+                            <kbd className="px-1.5 py-0.5 text-[10px] font-mono bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border rounded">Ctrl+K</kbd>
                             to navigate
                         </p>
                     </motion.div>
