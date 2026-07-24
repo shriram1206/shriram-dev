@@ -146,6 +146,15 @@
       \resumeItemListEnd
 
     \resumeProjectHeading
+      {\textbf{Autonomous Medical Claim Adjudicator} --- Agentic RPA System $|$ \emph{UiPath, Gemini 2.5 API, JSON}}{2026}
+      \resumeItemListStart
+        \resumeItem{\textbf{Integrated Google's Gemini 2.5 Flash LLM} natively into a UiPath architecture via RESTful HTTP protocols to intelligently process unstructured EOB data, bypassing the strict limitations of traditional DOM scraping.}
+        \resumeItem{\textbf{Engineered a flawless web traversal loop} using simulated hardware events and fuzzy selectors to autonomously navigate proprietary portals, input patient keys, and securely extract dynamically rendered HTML blocks.}
+        \resumeItem{\textbf{Developed advanced string sanitization algorithms} and exact JSON configuration to parse multi-dimensional LLM responses and seamlessly inject AI-adjudicated decision statuses back into local arrays.}
+        \resumeItem{\textbf{Hardened the AI automation pipeline} against strict API rate limits and rendering logic using offset delays and \texttt{ContinueOnError} suppression to achieve a 100\% completion rate without human intervention.}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
       {\textbf{Quro} --- AI-Powered Database Assistant $|$ \emph{Java 17, Spring Boot 3.2, PostgreSQL, Docker, Kubernetes}}{2026 $|$ \href{https://quro-db-production.up.railway.app/}{Live}}
       \resumeItemListStart
        \resumeItem{\textbf{Built a natural-language-to-SQL engine} using Spring Boot 3.x, the GPT-4o API, PostgreSQL, and Redis caching, enabling non-technical stakeholders to query databases in plain English instead of writing SQL, significantly cutting analytics turnaround time.}

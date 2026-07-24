@@ -114,6 +114,38 @@ export const projects: Project[] = [
         highlight: 'Full-stack AI SaaS featuring a sub-200ms metaprompting engine and strict database security.'
     },
     {
+        id: 'llm-medical-adjudicator',
+        title: 'Autonomous Medical Claim Adjudicator',
+        description: 'An intelligent RPA pipeline bridging proprietary web portals with Generative AI to automate medical claim adjudication.',
+        longDescription: 'Designed and engineered a resilient robotic process automation pipeline integrating Google\'s Gemini 2.5 Flash to automatically process unstructured Explanation of Benefits (EOB) data and adjudicate medical claims without human intervention.',
+        techStack: ['UiPath', 'Gemini 2.5 API', 'JSON (Newtonsoft)', 'UI Automation', 'HTML5/CSS3'],
+        achievements: [
+            'Integrated Gemini 2.5 Flash natively into UiPath to rapidly parse unstructured EOB data.',
+            'Engineered a flawless web traversal loop using simulated hardware events and fuzzy selectors.',
+            'Developed string sanitization and JSON algorithms to accurately parse multi-dimensional LLM responses.',
+            'Hardened automation against API limits and UI changes to achieve a 100% completion rate.'
+        ],
+        technicalDetails: [
+            'Agentic AI Integration',
+            'Dynamic UI Automation',
+            'Complex Data Serialization',
+            'Enterprise Fallback Resilience'
+        ],
+        metrics: [
+            { label: 'AI Model', value: 'Gemini 2.5' },
+            { label: 'Automation', value: 'UiPath' },
+            { label: 'Completion', value: '100% Rate' },
+            { label: 'Status', value: 'Production' },
+        ],
+        links: {
+            github: '#',
+            live: '#'
+        },
+        image: '/projects/medical-agent.png',
+        date: '2026',
+        highlight: 'Native LLM integration with strict RPA loop fallback capabilities for enterprise automation.'
+    },
+    {
         id: 'second-brain',
         title: 'Second Brain — RAG Chatbot',
         description: 'A production-ready personal knowledge base chatbot powered by Llama-3 and RAG.',
