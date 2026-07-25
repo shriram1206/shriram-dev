@@ -146,7 +146,7 @@
       \resumeItemListEnd
 
     \resumeProjectHeading
-      {\textbf{Autonomous Medical Claim Adjudicator} --- Agentic RPA System $|$ \emph{UiPath, Gemini 2.5 API, JSON}}{2026}
+      {\textbf{Autonomous Medical Claim Adjudicator} --- Agentic RPA System $|$ \emph{UiPath, Gemini 2.5 API, JSON}}{2026 $|$ \href{https://github.com/shriram1206/AutoClaim-RPA-Engine}{Source}}
       \resumeItemListStart
         \resumeItem{\textbf{Integrated Google's Gemini 2.5 Flash LLM} natively into a UiPath architecture via RESTful HTTP protocols to intelligently process unstructured EOB data, bypassing the strict limitations of traditional DOM scraping.}
         \resumeItem{\textbf{Engineered a flawless web traversal loop} using simulated hardware events and fuzzy selectors to autonomously navigate proprietary portals, input patient keys, and securely extract dynamically rendered HTML blocks.}
@@ -155,7 +155,15 @@
       \resumeItemListEnd
 
     \resumeProjectHeading
-      {\textbf{Quro} --- AI-Powered Database Assistant $|$ \emph{Java 17, Spring Boot 3.2, PostgreSQL, Docker, Kubernetes}}{2026 $|$ \href{https://quro-db-production.up.railway.app/}{Live}}
+      {\textbf{Voice-Native Claim Adjudicator} --- AI Concierge $|$ \emph{FastAPI, MCP, ElevenLabs, WebSockets}}{2026 $|$ \href{https://github.com/shriram1206/autonomous-claim-adjudicator}{Source}}
+      \resumeItemListStart
+        \resumeItem{\textbf{Engineered a full-duplex conversational AI agent} using ElevenLabs that securely authenticates strict patient identifiers (Name, DOB, Member ID) via natural audio interruption handling.}
+        \resumeItem{\textbf{Architected a secure Python FastMCP backend} that allows cloud-based LLMs to dynamically query robust local databases without ever exposing raw schemas to the model context window.}
+        \resumeItem{\textbf{Built a custom glassmorphic UI dashboard} that aggressively polls WebSocket data structures to instantly render authenticated claim results in real-time as the AI agent speaks.}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{Quro} --- AI-Powered Database Assistant $|$ \emph{Java 17, Spring Boot 3.2, PostgreSQL, Docker}}{2026 $|$ \href{https://quro-db-production.up.railway.app/}{Live}}
       \resumeItemListStart
        \resumeItem{\textbf{Built a natural-language-to-SQL engine} using Spring Boot 3.x, the GPT-4o API, PostgreSQL, and Redis caching, enabling non-technical stakeholders to query databases in plain English instead of writing SQL, significantly cutting analytics turnaround time.}
        \resumeItem{\textbf{Improved query accuracy to 92\%+} on a test suite of 200+ patterns by iteratively tuning prompts, refining schema context, and adding guardrails around joins, filters, and aggregations.}

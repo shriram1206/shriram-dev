@@ -138,12 +138,43 @@ export const projects: Project[] = [
             { label: 'Status', value: 'Production' },
         ],
         links: {
-            github: '#',
+            github: 'https://github.com/shriram1206/AutoClaim-RPA-Engine',
             live: '#'
         },
         image: '/projects/medical-agent.png',
         date: '2026',
         highlight: 'Native LLM integration with strict RPA loop fallback capabilities for enterprise automation.'
+    },
+    {
+        id: 'voice-medical-adjudicator',
+        title: 'Voice-Native Claim Adjudicator',
+        description: 'A voice-native AI healthcare concierge that seamlessly bridges cloud language models with secure local databases to process live patient claims.',
+        longDescription: 'Architected a sophisticated Python FastMCP backend integrated with ElevenLabs conversational AI. This agent dynamically queries robust local databases and adjudicates claims in real-time, instantly rendering results on a glassmorphic dashboard while maintaining strict context window security.',
+        techStack: ['Python', 'FastAPI', 'MCP', 'ElevenLabs', 'WebSockets', 'Vanilla JS/CSS'],
+        achievements: [
+            'Engineered a full-duplex conversational AI agent using ElevenLabs that authenticates strict patient identifiers via natural audio interruptions.',
+            'Architected a secure Python FastMCP backend preventing raw database schemas from ever being exposed to the LLM context window.',
+            'Built a custom glassmorphic UI dashboard that aggressively polls WebSocket data structures to render claim results in real-time.'
+        ],
+        technicalDetails: [
+            'Voice-Native Security',
+            'Model Context Protocol (MCP)',
+            'Dynamic DOM Orchestration',
+            'Real-Time WebSockets'
+        ],
+        metrics: [
+            { label: 'Voice AI', value: 'ElevenLabs' },
+            { label: 'Backend', value: 'FastMCP' },
+            { label: 'Latency', value: 'Real-Time' },
+            { label: 'Status', value: 'Live' },
+        ],
+        links: {
+            github: 'https://github.com/shriram1206/autonomous-claim-adjudicator',
+            live: '#'
+        },
+        image: '/projects/voice-agent.png',
+        date: '2026',
+        highlight: 'Implements the new Model Context Protocol (MCP) securely with real-time, full-duplex ElevenLabs voice integration.'
     },
     {
         id: 'second-brain',
