@@ -144,6 +144,14 @@
         \resumeItem{\textbf{Hardened API security} by enforcing strict Pydantic payload validation to prevent LLM Denial-of-Wallet attacks, implementing a Debounce API to block disposable emails, and tightening CORS controls.}
         \resumeItem{\textbf{Implemented tier-based usage tracking} on Supabase with RLS and JWT auth to enforce Base vs. ML-Elite rate limits without cross-tenant data leakage.}
       \resumeItemListEnd
+    \resumeProjectHeading
+      {\textbf{Agentic Meeting Assistant} --- AI Workspace Secretary $|$ \emph{FastAPI, MV3, Groq (Llama-3.3)}}{2026 $|$ \href{https://github.com/shriram1206/agentic-meeting-assistant}{Source}}
+      \resumeItemListStart
+        \resumeItem{\textbf{Built a lightweight Javascript service worker} (Chrome MV3) to bypass dynamic Google Meet obfuscation using a greedy polling loop for live caption streaming.}
+        \resumeItem{\textbf{Engineered deterministic output validation} using Python's Pydantic to convert unpredictable LLM hallucinations into strictly typed class objects to prevent downstream API crashes.}
+        \resumeItem{\textbf{Designed a stateful Human-in-The-Loop SQLite database} to freeze low-confidence outputs in a PENDING state for manual review before triggering headless OAuth REST API executions across Google Workspace.}
+      \resumeItemListEnd
+
 
     \resumeProjectHeading
       {\textbf{Autonomous Medical Claim Adjudicator} --- Agentic RPA System $|$ \emph{UiPath, Gemini 2.5 API, JSON}}{2026 $|$ \href{https://github.com/shriram1206/AutoClaim-RPA-Engine}{Source}}

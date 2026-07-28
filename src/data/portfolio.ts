@@ -114,6 +114,40 @@ export const projects: Project[] = [
         highlight: 'Full-stack AI SaaS featuring a sub-200ms metaprompting engine and strict database security.'
     },
     {
+        id: 'agentic-meeting-assistant',
+        title: 'Agentic Meeting Assistant',
+        description: 'An autonomous Chrome Extension and headless LLM backend that acts as an active AI secretary during Google Meet calls.',
+        longDescription: 'Engineered a resilient JavaScript service worker (Chrome MV3) that bypasses Google Meet\'s dynamic DOM obfuscation. Powered by a highly-optimized Llama-3.3-70B model via Groq, it intelligently streams live captions, identifies actionable intents (meetings, emails, tasks), and natively executes authenticated background actions directly across the Google Workspace ecosystem seamlessly.',
+        techStack: ['Python', 'FastAPI', 'Groq (Llama-3)', 'Chrome MV3', 'Pydantic', 'SQLAlchemy', 'Google Cloud APIs'],
+        achievements: [
+            'Built a defiant DOM extraction loop via Chrome MV3 to bypass Meet\'s obfuscation and stream live captions.',
+            'Swapped legacy LLMs for Groq (Llama-3.3-70B), reducing latency by 30x while enforcing strict JSON schemas.',
+            'Engineered rigorous deterministic validation using Pydantic, neutralizing LLM hallucinations before API execution.',
+            'Designed a stateful Human-in-The-Loop mechanism mapping to SQLite for manual rollback on low-confidence outputs.',
+            'Wired headless backend integrations directly into Google Calendar, Gmail, and Tasks via robust OAuth REST APIs.'
+        ],
+        technicalDetails: [
+            'Defiant DOM Extraction',
+            'Low-Latency Agentic Pipeline',
+            'Deterministic Output Validation',
+            'Stateful Human-in-the-Loop',
+            'Headless API Aggregation'
+        ],
+        metrics: [
+            { label: 'LLM Latency', value: '30x Faster' },
+            { label: 'Model Core', value: 'Llama-3.3' },
+            { label: 'APIs', value: 'OAuth REST' },
+            { label: 'Validation', value: 'Pydantic Strict' },
+        ],
+        links: {
+            github: 'https://github.com/shriram1206/agentic-meeting-assistant',
+            live: '#'
+        },
+        image: '/projects/meeting-assistant.png',
+        date: '2026',
+        highlight: 'Achieves massive latency reductions (30x) using Groq inference while enforcing deterministic Pydantic execution logic.'
+    },
+    {
         id: 'llm-medical-adjudicator',
         title: 'Autonomous Medical Claim Adjudicator',
         description: 'An intelligent RPA pipeline bridging proprietary web portals with Generative AI to automate medical claim adjudication.',
