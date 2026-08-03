@@ -211,6 +211,99 @@ export const projects: Project[] = [
         highlight: 'Implements the new Model Context Protocol (MCP) securely with real-time, full-duplex ElevenLabs voice integration.'
     },
     {
+        id: 'pharmagraph-knowledge-engine',
+        title: 'PharmaGraph Knowledge Engine',
+        description: 'An advanced Natural Language-to-Cypher (NL2Cypher) medical graph database tool.',
+        longDescription: 'Architected a highly reliable Graph RAG pipeline utilizing a Neo4j database and Groq\'s Llama-3 model. Transformed complex medical ontology queries from natural plain language directly into executable Cypher code, presented in a beautifully styled glassmorphic React/Vite dashboard.',
+        techStack: ['Neo4j', 'Cypher', 'Llama-3 (Groq)', 'Python', 'React/Vite', 'FastAPI'],
+        achievements: [
+            'Architected a production-grade Neo4j graph database to map complex pharmacological relationships.',
+            'Integrated Groq (Llama 3) to execute zero-shot NL2Cypher queries with highly accurate entity resolution.',
+            'Built a sleek glassmorphic React/Vite frontend for visualizing the resulting medical knowledge nodes dynamically.'
+        ],
+        technicalDetails: [
+            'Graph RAG Architecture',
+            'NL2Cypher Translation',
+            'Complex Ontology Mapping',
+            'Dynamic Network Visualization'
+        ],
+        metrics: [
+            { label: 'Pattern', value: 'NL2Cypher' },
+            { label: 'Database', value: 'Neo4j Graph' },
+            { label: 'LLM Model', value: 'Groq Llama-3' },
+            { label: 'UI', value: 'Glassmorphic' },
+        ],
+        links: {
+            github: 'https://github.com/shriram1206/pharmagraph-knowledge-engine',
+            live: '#'
+        },
+        image: '/projects/pharmagraph.png',
+        date: '2026',
+        highlight: 'Implements native NL2Cypher translation utilizing Groq integration for instant Graph Database traversal.'
+    },
+    {
+        id: 'vision-cluster-ai',
+        title: 'Vision Cluster AI',
+        description: 'An unsupervised machine learning system detecting objects via custom clustering and magic byte security pipelines.',
+        longDescription: 'Built a robust computer vision pipeline utilizing dynamic canvas scaling for bounding boxes. Enhanced system security by explicitly identifying MIME types via raw magic binary hex headers instead of trusting superficial file extensions, preventing malicious payload uploads on the server.',
+        techStack: ['Python', 'OpenCV', 'TensorFlow', 'FastAPI', 'Binary Validation'],
+        achievements: [
+            'Deployed an unsupervised ML pipeline that successfully detects and semantic-clusters random objects in chaotic images.',
+            'Engineered dynamic canvas scaling algorithms for pixel-perfect bounding box extraction across 4k imagery.',
+            'Secured the core file upload protocol using native Hex binary magic-byte validation instead of standard string matching.'
+        ],
+        technicalDetails: [
+            'Unsupervised Clustering',
+            'Dynamic Canvas Scaling',
+            'Magic Byte MIME Verification',
+            'Tensorflow Inferencing'
+        ],
+        metrics: [
+            { label: 'Type', value: 'Unsupervised ML' },
+            { label: 'Security', value: 'Hex Headers' },
+            { label: 'Scaling', value: 'Dynamic Canvas' },
+            { label: 'Latency', value: 'Real-Time' },
+        ],
+        links: {
+            github: 'https://github.com/shriram1206/vision-cluster-ai',
+            live: '#'
+        },
+        image: '/projects/vision-cluster.png',
+        date: '2026',
+        highlight: 'Secures infrastructure against malicious payloads by bypassing superficial extensions via deep Magic Byte binary validation.'
+    },
+    {
+        id: 'youtube-active-recall',
+        title: 'Active Recall Generator',
+        description: 'An intelligent pipeline turning passive YouTube videos into engaging active recall quizzes via dual LLM processing.',
+        longDescription: 'Engineered a highly resilient, stateless web application that converts YouTube transcripts into dynamic active recall quizzes using a strict two-step LLM pipeline design. Hardened with robust rate limiting per-minute and secure XML tag extraction logic to mitigate prompt injection edge cases natively in the browser without needing persistence.',
+        techStack: ['Python', 'Groq (Llama-3)', 'YouTube Transcripts', 'Stateless Arch', 'React/Vite'],
+        achievements: [
+            'Designed a completely stateless MVP application utilizing dual-step LLM parsing, avoiding messy database persistence completely.',
+            'Implemented custom XML tag logic boundaries natively mitigating severe prompt injection edge cases.',
+            'Secured backend FastAPI endpoints via aggressive rate limits defaulting to 30 requests/min.'
+        ],
+        technicalDetails: [
+            'Stateless Architecture',
+            'Dual-step Agent Piping',
+            'Rate Limit Hardening',
+            'XML Mitigation Guardrails'
+        ],
+        metrics: [
+            { label: 'Architecture', value: 'Stateless MVP' },
+            { label: 'LLM Calls', value: 'Dual-Step' },
+            { label: 'Security', value: 'XML Guardrails' },
+            { label: 'Limit', value: '30 Req/Min' },
+        ],
+        links: {
+            github: 'https://github.com/shriram1206/youtube-active-recall',
+            live: '#'
+        },
+        image: '/projects/youtube-active-recall.png',
+        date: '2026',
+        highlight: 'Mitigates LLM context poisoning natively utilizing distinct XML boundaries and dual-step routing constraints.'
+    },
+    {
         id: 'second-brain',
         title: 'Second Brain — RAG Chatbot',
         description: 'A production-ready personal knowledge base chatbot powered by Llama-3 and RAG.',
