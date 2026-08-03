@@ -13,7 +13,7 @@ export const personalInfo = {
     techStack: ['Python', 'Spring AI', 'LangChain', 'Llama-3', 'pgvector', 'ChromaDB', 'Java', 'Spring Boot'],
     graduation: 'B.E. Computer Science',
     cgpa: '77%',
-    resumeUrl: '/Shriram M - AI Engineer.pdf',
+    resumeUrl: '/M Shriram-AI Engineer.pdf',
 };
 
 export const credibilityCards = [
