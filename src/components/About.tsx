@@ -34,24 +34,23 @@ const About: React.FC = () => {
                         className="md:col-span-3 space-y-5"
                     >
                         <p className="text-base md:text-lg text-light-textSecondary dark:text-dark-textSecondary leading-relaxed">
-                            I am an AI engineer focused on{' '}
+                            I build software that solves real workflow problems — from{' '}
                             <span className="text-light-textPrimary dark:text-dark-textPrimary font-medium">
-                                applied AI, LLM orchestration, and intelligent agent systems
+                                applied AI systems to backend-heavy orchestration engines
                             </span>
-                            . My work centers on turning complex ideas into practical software — especially where
-                            APIs, automation, data flow, and LLM-powered features come together.
+                            . My focus is on shipping practical AI tools with strong engineering foundations, clean architectures, and real-world usefulness.
                         </p>
-                        <p className="text-base md:text-lg text-light-textSecondary dark:text-dark-textSecondary leading-relaxed">
-                            I am currently looking for full-time roles where I can contribute to{' '}
-                            <span className="text-light-textPrimary dark:text-dark-textPrimary font-medium">
-                                AI engineering, applied RAG architectures, or cognitive search teams
-                            </span>.
-                        </p>
-                        <p className="text-base text-light-textSecondary dark:text-dark-textSecondary leading-relaxed">
-                            From building and shipping Prompt Forge as a live metaprompting SaaS to developing
-                            production RAG pipelines and SSE-based tool integrations during my internship at Servimos Technologies,
-                            my experience reflects a focus on practical engineering and real-world problem solving.
-                        </p>
+                        <div className="text-base md:text-lg text-light-textSecondary dark:text-dark-textSecondary leading-relaxed mt-4">
+                            <span className="text-light-textPrimary dark:text-dark-textPrimary font-semibold mb-2 block">
+                                ✦ Current Focus
+                            </span>
+                            <ul className="list-disc pl-5 space-y-2 text-sm md:text-base">
+                                <li>Architecting voice-native and multi-agent AI systems with MCP.</li>
+                                <li>Exploring NL2SQL / NL2Cypher translation and knowledge-graph retrieval.</li>
+                                <li>Fusing deterministic RPA with agentic reasoning for real-world automation.</li>
+                                <li>Growing into AI engineering roles with strong technical ownership.</li>
+                            </ul>
+                        </div>
                     </motion.div>
 
                     {/* Right: Quick Facts */}
