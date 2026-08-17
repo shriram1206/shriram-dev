@@ -6,15 +6,23 @@
 
 @layer base {
   :root {
-    /* Premium Minimal Light Mode */
-    --color-light-bg: 255 255 255;
-    --color-light-surface: 249 250 251;
-    --color-light-primary: 17 24 39;
-    --color-light-secondary: 107 114 128;
-    --color-light-accent: 55 65 81;
-    --color-light-textPrimary: 10 10 10;
-    --color-light-textSecondary: 107 114 128;
-    --color-light-border: 229 231 235;
+    /* Premium Minimal Light Mode (Pure Neutral, Zero Blue) */
+    --color-light-bg: 245 245 245;
+    /* #f5f5f5 (neutral-100) */
+    --color-light-surface: 229 229 229;
+    /* #e5e5e5 (neutral-200) */
+    --color-light-primary: 23 23 23;
+    /* #171717 */
+    --color-light-secondary: 115 115 115;
+    /* #737373 */
+    --color-light-accent: 82 82 82;
+    /* #525252 */
+    --color-light-textPrimary: 38 38 38;
+    /* #262626 (neutral-800) */
+    --color-light-textSecondary: 115 115 115;
+    /* #737373 (neutral-500) */
+    --color-light-border: 212 212 212;
+    /* #d4d4d4 (neutral-300) */
 
     /* Premium Minimal Dark Mode */
     --color-dark-bg: 0 0 0;
