@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { useMousePosition } from '../hooks/useMousePosition';
+import React, { useEffect, useRef, useState } from 'react';
 
 const CustomCursor: React.FC = () => {
-    const { x, y } = useMousePosition();
+    const curX = useRef(0);
+    const curY = useRef(0);
+    const tgX = useRef(0);
+    const tgY = useRef(0);
+    const dotX = useRef(0);
+    const dotY = useRef(0);
+
+    const outerRef = useRef<HTMLDivElement>(null);
+    const innerRef = useRef<HTMLDivElement>(null);
+
     const [isHovering, setIsHovering] = useState(false);
-    const [isVisible, setIsVisible] = useState(false);
     const [isMobile, setIsMobile] = useState(true);
 
     useEffect(() => {
-        // Only show on desktop
         const checkMobile = () => setIsMobile(window.innerWidth < 768);
         checkMobile();
         window.addEventListener('resize', checkMobile);
@@ -19,23 +24,56 @@ const CustomCursor: React.FC = () => {
     useEffect(() => {
         if (isMobile) return;
 
-        const handleMouseEnter = () => setIsVisible(true);
-        const handleMouseLeave = () => setIsVisible(false);
-        document.addEventListener('mouseenter', handleMouseEnter);
-        document.addEventListener('mouseleave', handleMouseLeave);
+        let animationFrameId: number;
+
+        const onMouseMove = (e: MouseEvent) => {
+            tgX.current = e.clientX;
+            tgY.current = e.clientY;
+            // The inner dot instantly follows the mouse
+            dotX.current = e.clientX;
+            dotY.current = e.clientY;
+        };
+
+        const updateCursor = () => {
+            // Smoothly interpolate the outer ring towards the target
+            curX.current += (tgX.current - curX.current) * 0.15;
+            curY.current += (tgY.current - curY.current) * 0.15;
+
+            // Apply transforms via DOM directly, completely avoiding React re-renders for 60fps zero-lag scrolling
+            if (outerRef.current) {
+                // Adjust translation based on hover size logic (isHovering is read inside the render frame passively)
+                const offset = document.documentElement.classList.contains('cursor-hovering') ? 24 : 16;
+                outerRef.current.style.transform = `translate3d(${curX.current - offset}px, ${curY.current - offset}px, 0)`;
+            }
+            if (innerRef.current) {
+                innerRef.current.style.transform = `translate3d(${dotX.current - 3}px, ${dotY.current - 3}px, 0)`;
+            }
+
+            animationFrameId = requestAnimationFrame(updateCursor);
+        };
+
+        window.addEventListener('mousemove', onMouseMove);
+        animationFrameId = requestAnimationFrame(updateCursor);
 
         // Detect hoverable elements
         const handleOver = (e: MouseEvent) => {
             const target = e.target as HTMLElement;
             const hoverable = target.closest('a, button, [data-cursor-hover], input, textarea, select');
-            setIsHovering(!!hoverable);
+            if (hoverable) {
+                document.documentElement.classList.add('cursor-hovering');
+                setIsHovering(true);
+            } else {
+                document.documentElement.classList.remove('cursor-hovering');
+                setIsHovering(false);
+            }
         };
         document.addEventListener('mouseover', handleOver);
 
         return () => {
-            document.removeEventListener('mouseenter', handleMouseEnter);
-            document.removeEventListener('mouseleave', handleMouseLeave);
+            window.removeEventListener('mousemove', onMouseMove);
             document.removeEventListener('mouseover', handleOver);
+            cancelAnimationFrame(animationFrameId);
+            document.documentElement.classList.remove('cursor-hovering');
         };
     }, [isMobile]);
 
@@ -44,31 +82,22 @@ const CustomCursor: React.FC = () => {
     return (
         <>
             {/* Outer ring */}
-            <motion.div
-                className="fixed top-0 left-0 pointer-events-none z-[60] mix-blend-difference"
-                animate={{
-                    x: x - (isHovering ? 24 : 16),
-                    y: y - (isHovering ? 24 : 16),
-                    width: isHovering ? 48 : 32,
-                    height: isHovering ? 48 : 32,
-                    opacity: isVisible ? 1 : 0,
-                }}
-                transition={{ type: 'spring', stiffness: 700, damping: 30, mass: 0.1 }}
+            <div
+                ref={outerRef}
+                className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference transition-all duration-200 ease-out"
+                style={{ width: isHovering ? 48 : 32, height: isHovering ? 48 : 32 }}
             >
                 <div className={`w-full h-full rounded-full border ${isHovering ? 'border-white/60' : 'border-white/30'} transition-colors duration-200`} />
-            </motion.div>
+            </div>
+
             {/* Inner dot */}
-            <motion.div
-                className="fixed top-0 left-0 pointer-events-none z-[60] mix-blend-difference"
-                animate={{
-                    x: x - 3,
-                    y: y - 3,
-                    opacity: isVisible ? 1 : 0,
-                }}
-                transition={{ type: 'tween', duration: 0 }}
+            <div
+                ref={innerRef}
+                className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"
+                style={{ width: 6, height: 6 }}
             >
-                <div className="w-1.5 h-1.5 rounded-full bg-white" />
-            </motion.div>
+                <div className="w-full h-full rounded-full bg-white" />
+            </div>
         </>
     );
 };

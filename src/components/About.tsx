@@ -4,8 +4,8 @@ import { MapPin, GraduationCap, Briefcase, Code2, ArrowUpRight } from 'lucide-re
 
 const About: React.FC = () => {
     const quickFacts = [
-        { icon: MapPin, label: 'Based in', value: 'Tamil Nadu, India' },
-        { icon: GraduationCap, label: 'Education', value: 'B.E. CS (Graduated March 2026)' },
+        { icon: MapPin, label: 'Based in', value: 'Namakkal,Tamil Nadu, India' },
+        { icon: GraduationCap, label: 'Education', value: 'B.E. CS (Graduated May 2026)' },
         { icon: Briefcase, label: 'Interested in', value: 'Applied AI & LLM Systems' },
         { icon: Code2, label: 'Core stack', value: 'Python, Spring AI, LangChain, React' },
         { icon: ArrowUpRight, label: 'Status', value: 'Open to full-time opportunities' },

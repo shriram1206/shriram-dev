@@ -1,202 +1,288 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, X } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { ExternalLink, Github } from 'lucide-react';
 import { projects } from '../data/portfolio';
 
-const Projects: React.FC = () => {
-    const [selectedId, setSelectedId] = useState<string | null>(null);
-    const selectedProject = projects.find(p => p.id === selectedId);
-
-    // Prevent background scrolling when the modal is open
-    useEffect(() => {
-        if (selectedId) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
+// Generates true/false for a 15x15 grid based on variant index
+const getPattern = (x: number, y: number, variant: number) => {
+    const cx = 7, cy = 7;
+    if (variant === 0) {
+        // Circle + 4 corners (Like BulkBeings first card)
+        const r2 = (x - cx) ** 2 + (y - cy) ** 2;
+        const isCircle = r2 >= 12 && r2 <= 20;
+        const isCorner = (x === 2 && y === 2) || (x === 12 && y === 2) || (x === 2 && y === 12) || (x === 12 && y === 12);
+        return isCircle || isCorner;
+    } else if (variant === 1) {
+        // Bar Chart / Audio visualizer (Like BulkBeings middle card)
+        const h = [0, 2, 8, 4, 11, 7, 2, 7, 11, 4, 8, 2, 0];
+        if (x >= 1 && x <= 13) {
+            return y >= 13 - h[x - 1] && y <= 13;
         }
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
-    }, [selectedId]);
+        return false;
+    } else if (variant === 2) {
+        // Spiral / Golden Ratio (Like BulkBeings right card)
+        const spiralPts = [
+            [7, 7], [8, 7], [8, 8], [7, 8], [6, 8], [6, 7], [6, 6], [7, 6], [8, 6], [9, 6], [10, 6],
+            [10, 7], [10, 8], [10, 9], [10, 10], [9, 10], [8, 10], [7, 10], [6, 10], [5, 10], [4, 10], [4, 9],
+            [4, 8], [4, 7], [4, 6], [4, 5], [4, 4], [5, 4], [6, 4], [7, 4], [8, 4], [9, 4], [10, 4], [11, 4]
+        ];
+        return spiralPts.some(p => p[0] === x && p[1] === y);
+    } else if (variant === 3) {
+        // Sine wave / Pulse
+        const yBase = Math.sin(x * 0.8) * 3 + 7;
+        return Math.abs(y - yBase) <= 1;
+    } else if (variant === 4) {
+        // Neural Network Nodes
+        const nodes = [[3, 3], [11, 3], [7, 7], [3, 11], [11, 11]];
+        const isNode = nodes.some(p => Math.abs(x - p[0]) <= 1 && Math.abs(y - p[1]) <= 1);
+        const isX = Math.abs(x - y) === 0 || Math.abs(x + y) === 14;
+        return (isNode || (isX && x > 1 && x < 13 && y > 1 && y < 13)) && !(isNode && isX);
+    } else {
+        // DNA / Double Helix
+        const y1 = Math.sin(x * 0.5) * 3 + 7;
+        const y2 = Math.cos(x * 0.5) * 3 + 7;
+        return Math.abs(y - y1) <= 0.5 || Math.abs(y - y2) <= 0.5;
+    }
+};
 
-    // Close on escape key
+const PixelGrid = ({ variant }: { variant: number }) => {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+
     useEffect(() => {
-        const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') setSelectedId(null);
-        };
-        window.addEventListener('keydown', handleKeyDown);
-        return () => window.removeEventListener('keydown', handleKeyDown);
-    }, []);
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        // Higher resolution for retina displays
+        const dpr = window.devicePixelRatio || 1;
+        const size = 15;
+        const cellSize = 5; // 5px square
+        const gap = 2; // 2px gap
+        const totalSize = size * cellSize + (size - 1) * gap;
+
+        canvas.width = totalSize * dpr;
+        canvas.height = totalSize * dpr;
+        ctx.scale(dpr, dpr);
+        canvas.style.width = `${totalSize}px`;
+        canvas.style.height = `${totalSize}px`;
+
+        ctx.clearRect(0, 0, totalSize, totalSize);
+
+        // Dark mode check for background dots
+        const isDark = document.documentElement.classList.contains('dark');
+        const bgDotColor = isDark ? 'rgba(255, 255, 255, 0.04)' : 'rgba(0, 0, 0, 0.1)';
+
+        for (let i = 0; i < 225; i++) {
+            const x = i % size;
+            const y = Math.floor(i / size);
+            const cx = x * (cellSize + gap);
+            const cy = y * (cellSize + gap);
+
+            if (getPattern(x, y, variant)) {
+                // Active red pixel
+                ctx.fillStyle = '#f10b18';
+                ctx.shadowColor = 'rgba(241, 11, 24, 0.9)';
+                ctx.shadowBlur = 6;
+                // Draw rounded rect (1px radius approach)
+                ctx.beginPath();
+                ctx.roundRect(cx, cy, cellSize, cellSize, 1);
+                ctx.fill();
+                ctx.shadowBlur = 0; // Reset for other draws
+            } else {
+                // Inactive pixel
+                ctx.fillStyle = bgDotColor;
+                ctx.beginPath();
+                ctx.roundRect(cx, cy, cellSize, cellSize, 1);
+                ctx.fill();
+            }
+        }
+    }, [variant]); // Re-run if theme changes usually requires a theme listener, but for now this is static
 
     return (
-        <section id="projects" className="section-padding bg-light-surface/50 dark:bg-dark-surface/20 min-h-screen">
-            <div className="container-custom">
-                {/* Section Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="mb-12"
-                >
-                    <p className="section-label">Projects</p>
-                    <h2 className="section-title">Production Systems</h2>
-                    <p className="section-subtitle">
-                        Architectures focusing on sub-second latency, rigorous database security, and verifiable AI reasoning.
-                    </p>
-                </motion.div>
-
-                {/* Highly Minimalist Bento/Masonry Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 mb-8 gap-6">
-                    {projects.slice(0, 2).map((project, index) => (
-                        <ProjectCard key={project.id} project={project} index={index} onClick={() => setSelectedId(project.id)} />
-                    ))}
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {projects.slice(2).map((project, index) => (
-                        <ProjectCard key={project.id} project={project} index={index + 2} onClick={() => setSelectedId(project.id)} />
-                    ))}
-                </div>
-            </div>
-
-            {/* Framer Motion App-Store Expansion Modal */}
-            <AnimatePresence>
-                {selectedId && selectedProject && (
-                    <>
-                        {/* Backdrop Blur */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            className="fixed inset-0 z-50 bg-white/50 dark:bg-[#0a0a0a]/70 backdrop-blur-md"
-                            onClick={() => setSelectedId(null)}
-                        />
-
-                        {/* Modal Container */}
-                        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 pointer-events-none">
-                            <motion.div
-                                layoutId={`card-${selectedProject.id}`}
-                                className="w-full max-w-4xl max-h-full bg-light-bg dark:bg-dark-surface rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row pointer-events-auto border border-light-border/50 dark:border-dark-border/50"
-                            >
-                                {/* Left Side: Media Spotlight */}
-                                <div className="w-full md:w-1/2 h-56 sm:h-64 md:h-auto relative bg-gradient-to-br from-light-surface to-light-bg dark:from-[#111111] dark:to-[#0a0a0a] p-6 lg:p-8 flex items-center justify-center border-b md:border-b-0 md:border-r border-light-border/40 dark:border-dark-border/40">
-                                    <motion.div layoutId={`media-${selectedProject.id}`} className="w-full h-full flex items-center justify-center">
-                                        <img src={selectedProject.image} alt={selectedProject.title} className="max-w-full max-h-full object-contain drop-shadow-2xl" />
-                                    </motion.div>
-
-                                    {/* Mobile Close Button (Over Image) */}
-                                    <button onClick={() => setSelectedId(null)} className="absolute top-4 right-4 md:hidden p-2 rounded-full bg-black/20 backdrop-blur-sm text-white hover:bg-black/40 transition-colors">
-                                        <X className="w-5 h-5" />
-                                    </button>
-                                </div>
-
-                                {/* Right Side: Deep Technical Details */}
-                                <div className="w-full md:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col overflow-y-auto custom-scrollbar bg-light-bg dark:bg-dark-bg">
-
-                                    {/* Header & Desktop Close Button */}
-                                    <div className="flex justify-between items-start mb-6">
-                                        <motion.h3 layoutId={`title-${selectedProject.id}`} className="text-2xl lg:text-3xl font-bold text-light-textPrimary dark:text-dark-textPrimary leading-tight">
-                                            {selectedProject.title}
-                                        </motion.h3>
-                                        <button onClick={() => setSelectedId(null)} className="hidden md:flex p-2 rounded-full hover:bg-light-surface dark:hover:bg-dark-surface transition-colors">
-                                            <X className="w-6 h-6 text-light-textSecondary dark:text-dark-textSecondary" />
-                                        </button>
-                                    </div>
-
-                                    {/* Key Differentiator Core */}
-                                    {selectedProject.highlight && (
-                                        <motion.div
-                                            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-                                            className="mb-6 p-4 rounded-xl border border-light-primary/20 dark:border-dark-primary/20 bg-light-primary/5 dark:bg-dark-primary/5"
-                                        >
-                                            <p className="text-[11px] font-bold uppercase tracking-wider text-light-primary dark:text-dark-primary mb-1">Architecture Differentiator</p>
-                                            <p className="text-sm font-medium text-light-textPrimary dark:text-dark-textPrimary leading-relaxed">
-                                                {selectedProject.highlight}
-                                            </p>
-                                        </motion.div>
-                                    )}
-
-                                    <motion.p
-                                        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
-                                        className="text-light-textSecondary dark:text-dark-textSecondary mb-8 leading-relaxed text-sm sm:text-base flex-1"
-                                    >
-                                        {selectedProject.longDescription || selectedProject.description}
-                                    </motion.p>
-
-                                    {/* Tech Stack Chips */}
-                                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} className="mt-auto">
-                                        <div className="flex flex-wrap gap-2 mb-8">
-                                            {selectedProject.techStack.map(tech => (
-                                                <span key={tech} className="px-3 py-1.5 rounded bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border text-xs font-mono text-light-textSecondary dark:text-dark-textSecondary">
-                                                    {tech}
-                                                </span>
-                                            ))}
-                                        </div>
-
-                                        {/* Action Links */}
-                                        <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-light-border dark:border-dark-border">
-                                            {selectedProject.links.live && selectedProject.links.live !== '#' && (
-                                                <a href={selectedProject.links.live} target="_blank" rel="noreferrer" className="btn-primary flex-1 justify-center py-3">
-                                                    Live Demo <ExternalLink className="w-4 h-4 ml-2" />
-                                                </a>
-                                            )}
-                                            {selectedProject.links.github && selectedProject.links.github !== '#' && (
-                                                <a href={selectedProject.links.github} target="_blank" rel="noreferrer" className="btn-outline flex-1 justify-center py-3">
-                                                    <Github className="w-4 h-4 mr-2" /> View Source
-                                                </a>
-                                            )}
-                                        </div>
-                                    </motion.div>
-
-                                </div>
-                            </motion.div>
-                        </div>
-                    </>
-                )}
-            </AnimatePresence>
-        </section>
+        <div className="w-fit mx-auto my-10 pointer-events-none flex items-center justify-center">
+            <canvas ref={canvasRef} className="block" />
+        </div>
     );
 };
 
-/* Memoized Card Component for the Grid */
-const ProjectCard = ({ project, index, onClick }: { project: any, index: number, onClick: () => void }) => {
+const TypewriterText = ({ text, delay = 0, showCursor = false, loop = true }: { text: string, delay?: number, showCursor?: boolean, loop?: boolean }) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "-50px" });
+    const [displayed, setDisplayed] = useState("");
+    const [done, setDone] = useState(false);
+
+    useEffect(() => {
+        if (!isInView) return;
+        let timeout: any;
+        let timer: any;
+
+        const type = () => {
+            setDisplayed("");
+            setDone(false);
+            let i = 0;
+            timer = setInterval(() => {
+                setDisplayed(text.substring(0, i + 1));
+                i++;
+                if (i >= text.length) {
+                    clearInterval(timer);
+                    setDone(true);
+                    if (loop) {
+                        timeout = setTimeout(type, 3000); // Wait 3s then loop
+                    }
+                }
+            }, 60);
+        };
+
+        timeout = setTimeout(type, delay);
+
+        return () => { clearTimeout(timeout); clearInterval(timer); };
+    }, [isInView, text, delay, loop]);
+
+    return (
+        <span ref={ref} className="inline-block min-h-[14px]">
+            {displayed}
+            {showCursor && !done && <span className="animate-pulse ml-0.5 opacity-70">_</span>}
+        </span>
+    );
+};
+
+const BulkBeingsCard = ({ project, index }: { project: any, index: number }) => {
+    // Generate deterministic categories for the card header
+    const typeTokens = project.techStack.length >= 2
+        ? `${project.techStack[0]} • ${project.techStack[1]}`
+        : 'SYSTEM • KERNEL';
+
+    const figNumber = `FIG.0${index + 1}`;
+
+    // Determine status badge
+    const status = project.metrics?.find((m: any) => m.label.includes('Status'))?.value?.toUpperCase() || 'LIVE';
+    const isLive = status.includes('LIVE') || status.includes('PROD');
+
     return (
         <motion.div
-            layoutId={`card-${project.id}`}
-            onClick={onClick}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.1, duration: 0.4 }}
-            className="group relative h-64 sm:h-72 md:h-[280px] w-full rounded-2xl overflow-hidden cursor-pointer bg-light-surface dark:bg-[#111111] shadow-lg hover:shadow-xl transition-shadow border border-light-border/40 dark:border-dark-border/40"
+            transition={{ delay: index * 0.1, duration: 0.5 }}
+            className="flex flex-col w-full group"
         >
-            {/* Center Media - Pushed up with pb-20 to avoid intersecting text */}
-            <motion.div layoutId={`media-${project.id}`} className="absolute inset-0 p-8 sm:p-10 pb-20 sm:pb-24 flex items-center justify-center">
-                <img
-                    src={project.image}
-                    alt={project.title}
-                    className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-700 ease-out drop-shadow-lg"
-                />
-            </motion.div>
+            {/* The Top Canvas Box */}
+            <div className="w-full bg-[#fafafa] dark:bg-[#0c0c0e] rounded-md border border-light-border/60 dark:border-white/[0.08] p-5 flex flex-col relative overflow-hidden transition-colors hover:border-light-primary/30 dark:hover:border-white/[0.2]">
 
-            {/* Overlay Gradient, Name & Hook */}
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/90 to-transparent p-5 sm:p-6 flex flex-col justify-end min-h-[65%] z-10 pointer-events-none">
-                <motion.h3
-                    layoutId={`title-${project.id}`}
-                    className="text-lg sm:text-xl font-bold text-white tracking-wide leading-tight drop-shadow-md line-clamp-1 mb-1.5"
-                >
-                    {/* Only show the first portion of the title (before any em-dash) for absolute minimalism */}
-                    {project.title.split('—')[0].trim()}
-                </motion.h3>
-                {/* The Hook */}
-                <p className="text-white/75 text-xs sm:text-sm line-clamp-2 leading-relaxed mb-0.5">
+                {/* Header Row */}
+                <div className="flex justify-between items-center w-full mb-6">
+                    <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-light-textSecondary/60 dark:text-white/40">
+                        {typeTokens}
+                    </span>
+                    <div className="flex items-center gap-1.5">
+                        <span className={`w-1.5 h-1.5 rounded-full ${isLive ? 'bg-emerald-500 shadow-[0_0_4px_#10b981]' : 'bg-amber-500 shadow-[0_0_4px_#f59e0b]'}`}></span>
+                        <span className="font-mono text-[9px] tracking-widest text-light-textPrimary dark:text-white/70 uppercase">
+                            {status}
+                        </span>
+                    </div>
+                </div>
+
+                {/* Terminal Exec Lines */}
+                <div className="font-mono text-[9.5px] uppercase tracking-wider text-light-textSecondary dark:text-white/50 flex flex-col gap-1.5 relative z-10 min-h-[40px]">
+                    <div className="flex items-center">
+                        <span className="text-[#f10b18] mr-1.5">$</span>
+                        <TypewriterText
+                            text={project.techStack.length > 2 ? `INIT ${project.techStack[2]}` : 'SYSTEM MOUNT'}
+                            delay={index * 200 + 400}
+                        />
+                        <motion.span
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 0.4 }}
+                            transition={{ delay: (index * 0.2) + 1.2, repeat: Infinity, repeatDelay: 3, duration: 0.2, repeatType: 'loop' }}
+                            className="ml-1.5"
+                        >
+                            OK
+                        </motion.span>
+                    </div>
+                    <div className="flex items-center">
+                        <span className="text-[#f10b18] mr-1.5">{index % 2 === 0 ? '$' : '∷'}</span>
+                        <TypewriterText
+                            text="WIRING DATA LAYER"
+                            delay={index * 200 + 1200}
+                            showCursor={index === 2}
+                        />
+                    </div>
+                </div>
+
+                {/* THE PIXEL LED GRID */}
+                <PixelGrid variant={index % 6} />
+
+                {/* Footer Row */}
+                <div className="flex justify-between items-center w-full mt-auto pt-2">
+                    <span className="font-mono text-[9px] tracking-widest text-light-textSecondary/50 dark:text-white/30">
+                        {figNumber}
+                    </span>
+                    <span className="font-mono text-[9px] tracking-widest uppercase text-light-textSecondary/50 dark:text-white/30">
+                        {project.metrics?.[0]?.value || 'TRAINING'}
+                    </span>
+                </div>
+
+            </div>
+
+            {/* Content Below Box */}
+            <div className="mt-6 flex flex-col px-1">
+                <p className="font-mono text-[10px] uppercase text-[#f10b18] tracking-widest mb-3 font-semibold">
+                    {project.technicalDetails?.[0] || 'ENGINEERING'}
+                </p>
+                <h3 className="text-2xl font-light text-light-textPrimary dark:text-white leading-tight mb-3">
+                    {project.title}
+                </h3>
+                <p className="text-[14px] text-light-textSecondary dark:text-white/60 leading-relaxed mb-6 line-clamp-2">
                     {project.description}
                 </p>
-                <div className="overflow-hidden mt-2 h-0 group-hover:h-5 transition-all duration-300 ease-out">
-                    <p className="text-white text-[10px] sm:text-xs font-mono font-semibold tracking-wider uppercase drop-shadow-md">View Architecture &rarr;</p>
+
+                {/* View Actions */}
+                <div className="flex items-center gap-5 mt-auto">
+                    {project.links?.live && project.links.live !== '#' && (
+                        <a href={project.links.live} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-[#f10b18] hover:opacity-70 transition-opacity">
+                            Live System <ExternalLink className="w-3 h-3" />
+                        </a>
+                    )}
+                    {project.links?.github && project.links.github !== '#' && (
+                        <a href={project.links.github} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-[11px] font-mono tracking-widest uppercase text-[#f10b18] hover:opacity-70 transition-opacity">
+                            Source Code <Github className="w-3 h-3" />
+                        </a>
+                    )}
                 </div>
             </div>
         </motion.div>
+    );
+}
+
+const Projects: React.FC = () => {
+    return (
+        <section id="projects" className="pt-24 pb-32">
+            <div className="container-custom">
+                {/* Section Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="mb-16"
+                >
+                    <h2 className="text-4xl md:text-5xl font-light text-light-textPrimary dark:text-white tracking-tight mb-4">
+                        Engineering autonomous <span className="text-[#f10b18]">systems.</span>
+                    </h2>
+                    <p className="font-mono text-[10px] tracking-widest uppercase text-light-textSecondary/60 dark:text-white/40 md:text-right w-full md:-mt-8">
+                        03 / PRODUCTION SCHEMAS
+                    </p>
+                </motion.div>
+
+                {/* Strict 3-Column Grid matching BulkBeings exactly */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16">
+                    {projects.map((project, index) => (
+                        <BulkBeingsCard key={project.id} project={project} index={index} />
+                    ))}
+                </div>
+            </div>
+        </section>
     );
 };
 

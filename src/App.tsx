@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import Preloader from './components/Preloader';
 import CustomCursor from './components/CustomCursor';
 import CommandPalette from './components/CommandPalette';
+import SpaceBackground from './components/SpaceBackground';
 import './index.css';
 
 // Lazy load sections below the fold
@@ -34,6 +35,9 @@ function App() {
 
     return (
         <ThemeProvider>
+            {/* Space Background (dark mode only) */}
+            <SpaceBackground />
+
             {/* Preloader */}
             {!isLoaded && <Preloader onComplete={handlePreloaderComplete} />}
 
@@ -43,7 +47,7 @@ function App() {
             {/* Command Palette (Cmd+K) */}
             <CommandPalette />
 
-            <div className={`min-h-screen overflow-x-hidden custom-scrollbar ${isLoaded ? '' : 'opacity-0'}`}>
+            <div className={`min-h-screen overflow-x-hidden custom-scrollbar relative z-10 ${isLoaded ? '' : 'opacity-0'}`}>
                 <ScrollProgress />
                 <Navigation />
                 <main>

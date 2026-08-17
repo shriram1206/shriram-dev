@@ -17,14 +17,14 @@
     --color-light-border: 229 231 235;
 
     /* Premium Minimal Dark Mode */
-    --color-dark-bg: 9 9 11;
-    --color-dark-surface: 24 24 27;
+    --color-dark-bg: 0 0 0;
+    --color-dark-surface: 12 12 14;
     --color-dark-primary: 250 250 250;
     --color-dark-secondary: 161 161 170;
     --color-dark-accent: 212 212 216;
     --color-dark-textPrimary: 250 250 250;
     --color-dark-textSecondary: 161 161 170;
-    --color-dark-border: 39 39 42;
+    --color-dark-border: 30 30 33;
   }
 
   html {
@@ -40,16 +40,28 @@
   }
 
   /* Hide default cursor on desktop when custom cursor is active */
+
   @media (min-width: 768px) {
     body {
       cursor: none;
     }
-    a, button, input, textarea, select, [data-cursor-hover] {
+
+    a,
+    button,
+    input,
+    textarea,
+    select,
+    [data-cursor-hover] {
       cursor: none;
     }
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Julius Sans One', sans-serif;
     font-weight: 500;
     letter-spacing: 0.05em;
@@ -57,6 +69,7 @@
 }
 
 @layer components {
+
   /* Glassmorphism Card */
   .glass-card {
     @apply bg-white/80 dark:bg-dark-surface/80 backdrop-blur-xl border border-light-border dark:border-dark-border rounded-2xl;
@@ -66,6 +79,7 @@
   .gradient-border-card {
     @apply relative rounded-2xl;
   }
+
   .gradient-border-card::before {
     content: '';
     position: absolute;
@@ -80,6 +94,7 @@
     opacity: 0;
     transition: opacity 0.3s ease;
   }
+
   .gradient-border-card:hover::before {
     opacity: 1;
   }
@@ -128,6 +143,7 @@
   .chip {
     @apply inline-flex items-center px-3 py-1.5 text-xs font-medium bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border rounded-lg text-light-textSecondary dark:text-dark-textSecondary transition-colors duration-200;
   }
+
   .chip:hover {
     @apply border-light-primary/20 dark:border-dark-primary/20 text-light-textPrimary dark:text-dark-textPrimary;
   }
@@ -154,16 +170,20 @@
 }
 
 @layer utilities {
+
   /* Custom Scrollbar */
   .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
   }
+
   .custom-scrollbar::-webkit-scrollbar-track {
     @apply bg-transparent;
   }
+
   .custom-scrollbar::-webkit-scrollbar-thumb {
     @apply bg-light-border dark:bg-dark-border rounded-full;
   }
+
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     @apply bg-light-secondary dark:bg-dark-secondary;
   }
