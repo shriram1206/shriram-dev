@@ -10,7 +10,7 @@ export const personalInfo = {
     github: 'https://github.com/shriram1206',
     tagline: 'GenAI Developer specializing in building LLM applications, RAG architectures, and agentic workflows.',
     description: "I focus on rapid prototyping and shipping practical AI tools with modern orchestration frameworks. My strength lies in leveraging LLMs to build functional apps, multi-agent logic, and GenAI backends.",
-    techStack: ['Python', 'FastAPI', 'Spring AI', 'Llama-3', 'pgvector', 'ChromaDB', 'Neo4j', 'MCP'],
+    techStack: ['Python', 'FastAPI', 'LangChain', 'Llama-3', 'pgvector', 'ChromaDB', 'Neo4j', 'MCP'],
     graduation: 'B.E. Computer Science',
     cgpa: '77%',
     resumeUrl: '/M Shriram-AI Engineer.pdf',
@@ -26,12 +26,12 @@ export const credibilityCards = [
     {
         id: 'servimos-intern',
         title: 'Servimos Technologies Intern',
-        description: 'Spring AI, RAG pipelines, and MCP workflows in production',
+        description: 'LangChain, RAG pipelines, and MCP workflows in production',
         icon: 'briefcase',
     },
     {
         id: 'spring-ai-rag',
-        title: 'Spring AI + RAG Systems',
+        title: 'Python + RAG Systems',
         description: 'Hands-on experience building cognitive search integrations',
         icon: 'cpu',
     },
@@ -375,7 +375,7 @@ export const experiences: Experience[] = [
         duration: 'Feb 2026 – Mar 2026',
         achievements: [
             'Implemented MCP-style server functionality using SSE transport, JSON-RPC, and tool-calling patterns for automated reporting pipelines.',
-            'Integrated Spring AI into Java-based applications to connect backend services with LLM-powered workflows for context-aware report generation.',
+            'Integrated LangChain into Python-based services to connect backend systems with LLM-powered workflows for context-aware report generation.',
             'Built and tested RAG pipeline components using pgvector + PostgreSQL for semantic document retrieval and automation use cases.',
             'Contributed to documentation and delivered an end-to-end AI backend module in an Agile sprint workflow with full ownership.'
         ],
@@ -410,7 +410,7 @@ export const skills: Skill[] = [
     {
         category: 'AI & Agent Systems',
         skills: [
-            { name: 'Spring AI & Python' },
+            { name: 'Python & LangChain' },
             { name: 'RAG Architectures' },
             { name: 'LangChain & LlamaIndex' },
             { name: 'Prompt Engineering' },
@@ -421,11 +421,10 @@ export const skills: Skill[] = [
     {
         category: 'AI Infrastructure',
         skills: [
-            { name: 'Java & Spring Boot' },
             { name: 'FastAPI & Node.js' },
             { name: 'REST & GraphQL APIs' },
             { name: 'Vector Search & SQL' },
-            { name: 'Microservices' },
+            { name: 'Microservices & Event-Driven' },
             { name: 'JSON-RPC / SSE' },
         ],
     },
@@ -446,7 +445,6 @@ export const skills: Skill[] = [
             { name: 'Docker' },
             { name: 'Supabase & Firebase' },
             { name: 'Vercel & Render' },
-            { name: 'Maven' },
             { name: 'Postman' },
         ],
     },
