@@ -2,14 +2,14 @@ import type { Project, Experience, Skill } from '../types';
 
 export const personalInfo = {
     name: 'Shriram M',
-    title: 'AI Engineer',
+    title: 'GenAI Developer',
     location: 'Tamil Nadu, India',
     phone: '+91 96008 35006',
     email: 'shriram.coder@gmail.com',
     linkedin: 'https://linkedin.com/in/shriram-m-sde',
     github: 'https://github.com/shriram1206',
-    tagline: 'Applied AI Engineer specializing in agentic workflows, multi-agent RAG architectures, and LLM orchestration.',
-    description: "I build software that solves real workflow problems \u2014 from applied AI systems to backend-heavy orchestration engines. My focus is on shipping practical AI tools with strong engineering foundations, clean architectures, and real-world usefulness.",
+    tagline: 'GenAI Developer specializing in building LLM applications, RAG architectures, and agentic workflows.',
+    description: "I focus on rapid prototyping and shipping practical AI tools with modern orchestration frameworks. My strength lies in leveraging LLMs to build functional apps, multi-agent logic, and GenAI backends.",
     techStack: ['Python', 'FastAPI', 'Spring AI', 'Llama-3', 'pgvector', 'ChromaDB', 'Neo4j', 'MCP'],
     graduation: 'B.E. Computer Science',
     cgpa: '77%',
@@ -38,7 +38,7 @@ export const credibilityCards = [
     {
         id: 'open-to-roles',
         title: 'Open to Full-Time Roles',
-        description: 'AI Engineering, Applied AI, and LLM Developer positions',
+        description: 'GenAI Developer, Application Developer, and Python Automation roles',
         icon: 'target',
     },
 ];
@@ -47,7 +47,7 @@ export const heroChips = [
     'Computer Science Graduate',
     'Prompt Forge SaaS Shipped',
     'RAG & Agentic Workflows',
-    'Open to AI Engineering Roles',
+    'Open to GenAI Developer Roles',
 ];
 
 export const projects: Project[] = [
